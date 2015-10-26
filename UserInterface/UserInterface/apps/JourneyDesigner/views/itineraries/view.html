@@ -1,0 +1,211 @@
+﻿<style type="text/css">
+/*
+   source: http://codeitdown.com/ordered-list-css-styles/
+*/
+.dayPanel ol {
+   list-style-type: none;
+   list-style-type: decimal !ie; /*IE 7- hack*/
+   margin: 0;
+   margin-left: 3em;
+   padding: 0;
+   counter-reset: li-counter;
+}
+
+.dayPanel ol > li {
+   position: relative;
+   margin-bottom: 20px;
+   padding-left: 0.5em;
+   min-height: 2em;
+   border-left: 2px solid #CCCCCC;
+}
+
+.dayPanel ol > li:before {
+   position: absolute;
+   top: 0;
+   left: -1.7em;
+   width: 1.5em;
+   font-size: 2em;
+   line-height: 1;
+   font-weight: bold;
+   text-align: right;
+   color: #464646;
+   content: counter(li-counter);
+   counter-increment: li-counter;
+}
+
+.dayPanel ol > li > a {
+   /*position: relative;*/
+   /*display: block;*/
+   /*padding: .4em .4em .4em 2em;*/
+   /**padding: .4em;*/
+   /*margin: .5em 0;*/
+   /*background: #ddd;*/
+   color: #444;
+   text-decoration: none;
+}
+
+
+/*
+
+*/
+.form-inline {
+}
+
+.form-inline .form-group {
+   width: 100%;
+}
+
+.form-inline .form-control {
+   width: 100%;
+}
+
+.formPadding {
+   padding-right: 20px;
+}
+
+/**
+* The dndDraggingSource class will be applied to
+* the source element of a drag operation. It makes
+* sense to hide it to give the user the feeling
+* that he's actually moving it.
+*/
+.dayPanel ol[dnd-list] .dndDraggingSource {
+  display: none;
+}
+
+.panel-body > .row > .dayitinerary-content {
+    border:  1px solid #ccc;
+    padding-top: 0px;
+    padding-bottom: 10px;
+    padding-left: 0px;
+    padding-right: 0px;
+    min-height: 350px;
+}
+
+
+.day-list {
+    list-style: none;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.day-header {
+    border-bottom-color: black;
+    border-bottom-style: solid;
+    border-bottom-width: thin;
+    border-bottom-color: #ccc;
+    background-color: #eeeeee;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.day-header > h4 {
+    margin-top: 2px;
+    margin-bottom: 2px;
+    color: #aaaaaa;
+}
+
+</style>
+<script type="text/javascript">
+    jQuery(document).ready(function ($) {
+        // what do you want to do on page load?
+    });
+</script>
+
+<div class="row">
+    <div class="col-md-12">
+
+        <!-- Default panel -->
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h1>{{ itinerary.displayName }}</h1>
+                <div class="panel-options">
+                    <a href="#/app/itineraries-edit/{{itinerary.id}}"><i class="glyphicon glyphicon-edit"></i>&nbsp; Edit</a>
+                    <a href=""><i class="fa-files-o"></i>&nbsp; Clone</a>
+                    <a href=""><i class="glyphicon glyphicon-calendar"></i>&nbsp; Create Departures</a>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-3">
+                        <h4>Filter: </h4>
+                        <a href="javaScript:void(0);" title="Days" ng-click="toggleAllDays(itinerary);"><i class="glyphicon glyphicon-tasks"></i></a>
+                        <a href="javaScript:void(0);" title="Itinerary"><i class="fa-coffee"></i></a>
+                        <a href="javaScript:void(0);" title="Transport"><i class="fa-ambulance"></i></a>
+                        <a href="javaScript:void(0);" title="Vessels"><i class="fa-anchor"></i></a>
+                        <a href="javaScript:void(0);" title="Hotels"><i class="fa-building"></i></a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3 dayPanel">
+                        <h4>Days: </h4>
+                        <!-- The dnd-list directive allows to drop elements into it.
+                        The dropped data will be added to the referenced list -->
+                        <ol dnd-list="itinerary.itineraryDays">
+                            <!-- The dnd-draggable directive makes an element draggable and will
+                            transfer the object that was assigned to it. If an element was
+                            dragged away, you have to remove it from the original list
+                            yourself using the dnd-moved attribute -->
+                            <li ng-repeat="day in itinerary.itineraryDays"
+                                dnd-draggable="day"
+                                dnd-moved="itinerary.itineraryDays.splice($index, 1); persistDayOrder();"
+                                dnd-effect-allowed="move"
+                                dnd-selected="models.selected = day"
+                                ng-class="{'selected': models.selected === day}">
+
+                                <div class="dayItem" ng-show="day.viewMode==='Read'">
+                                    <a href="javaScript:void(0);" ng-click="day.viewMode='Selected';" class="dayItem-nav">{{day.description || "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"}}</a>
+                                    <div class="dayItemTools pull-right">
+                                        <a href="javaScript:void(0);" ng-click="day.viewMode='Selected';"><i class="glyphicon glyphicon-eye-open"></i></a>
+                                    </div>
+                                </div>
+                                <div class="dayItem" ng-show="day.viewMode==='Selected'">
+                                    <a href="javaScript:void(0);" ng-click="day.viewMode='Read';" class="dayItem-nav">{{day.description || "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"}}</a>
+                                    <div class="dayItemTools pull-right">
+                                        <a href="javaScript:void(0);" ng-click="day.viewMode='Read';"><i class="glyphicon glyphicon-eye-close"></i></a>
+                                        <a href="javaScript:void(0);" ng-click="day.viewMode='Edit';"><i class="glyphicon glyphicon-edit"></i></a>
+                                        <a href="javaScript:void(0);" ng-click="confirmDeleteDay(day)"><i class="glyphicon glyphicon-trash"></i></a>
+                                    </div>
+                                </div>
+                                <div class="dayItem" ng-show="day.viewMode==='Edit'">
+                                    <form class="form-inline" role="form" ng-submit="persistDayDescription(this); day.viewMode='Selected';">
+                                        <div class="form-group">
+                                            <input type="text" id="day_{{day.id}}" value="{{day.description}}" focus-if="day.viewMode==='Edit'" class="form-control" />
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-md-12 text-right formPadding">
+                                                <a href="javaScript:void(0);" ng-click="persistDayDescription(this); day.viewMode='Selected';"><i class="glyphicon glyphicon-ok"></i></a>
+                                                <a href="javaScript:void(0);" ng-click="day.viewMode='Selected';"><i class="glyphicon glyphicon-remove"></i></a>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </li>
+                        </ol>
+                        <a href="javaScript:void(0);" ng-click="addDayItinerary()"><i class="glyphicon glyphicon-plus-sign"></i>Add day</a>
+                    </div>
+                    <div class="col-md-9 dayitinerary-content">
+                        <ol class="day-list">
+                            <li ng-repeat="day in itinerary.itineraryDays" ng-show="day.viewMode!=='Read'"  class="day-header">
+                                <h4>{{'Day ' + ($index + 1)}} {{day.description}}</h4>
+
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="row" ng-show="true">
+                    <pre>{{ itinerary | json }}</pre>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

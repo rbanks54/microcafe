@@ -1,0 +1,54 @@
+
+<div class="login-container">
+    <div class="row">
+        <div class="col-sm-6">
+            <script type="text/javascript">
+                jQuery(document).ready(function ($) {
+                });
+            </script>
+            <!-- Errors container -->
+            <div class="errors-container">
+
+            </div>
+            <div ng-if="user.loggedIn">
+                <h3>User already logged in</h3>
+            </div>
+            <!-- Add class "fade-in-effect" for login form effect -->
+            <form ng-if="!user.loggedIn" name="loginForm" ng-submit="login(loginForm)" novalidate>
+                <div class="login-header">
+                    <img src="https://content.scenicglobal.com/static/Logo-ST?height=35" alt="" />
+                    <p>Dear user, log in to access the admin area!</p>
+                </div>
+
+                <div class="form-group">
+                    <label>Username</label>
+                    <input name="username" type="text" placeholder="Username" class="form-control" ng-model="model.username" autocomplete="off" required />
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input name="password" type="password" placeholder="Password" class="form-control" ng-model="model.password" autocomplete="off" required />
+                </div>
+                <input class="btn btn-default" type="submit" value="Login" />
+            </form>
+
+            <!-- External login -->
+            <div class="external-login">
+                <!--
+                <a href="" class="facebook">
+                    <i class="fa-facebook"></i>
+                    Facebook Login
+                </a>
+                <a href="<?php _hash(); ?>" class="twitter">
+                    <i class="fa-twitter"></i>
+                    Login with Twitter
+                </a>
+
+                <a href="<?php _hash(); ?>" class="gplus">
+                    <i class="fa-google-plus"></i>
+                    Login with Google Plus
+                </a>
+                 -->
+            </div>
+        </div>
+    </div>
+</div>

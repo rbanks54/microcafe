@@ -1,0 +1,69 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Commons", "Commons", "{996FE8C5-4EBF-4CF9-9A6C-7A21F23A4B94}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ReadModel", "ReadModel", "{BB388DD9-BEE8-4755-952E-0F51CA60AAC1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Service", "Service", "{E4FA608F-F4B2-41AA-B819-3BAC53839407}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cashier.Common", "Cashier.Common\Cashier.Common.csproj", "{D3478255-CB14-4F5D-AC78-2E48B5EC2439}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D3D97918-2C26-4BAE-A0C5-F90B6F1085DD} = {D3D97918-2C26-4BAE-A0C5-F90B6F1085DD}
+		{FC24D38F-FB96-43E1-B21E-B6E1BFA1DC11} = {FC24D38F-FB96-43E1-B21E-B6E1BFA1DC11}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cashier.ReadModels.Service", "Cashier.ReadModels.Service\Cashier.ReadModels.Service.csproj", "{B1ECFB12-A337-49FF-AD09-304B5292A548}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D3D97918-2C26-4BAE-A0C5-F90B6F1085DD} = {D3D97918-2C26-4BAE-A0C5-F90B6F1085DD}
+		{FC24D38F-FB96-43E1-B21E-B6E1BFA1DC11} = {FC24D38F-FB96-43E1-B21E-B6E1BFA1DC11}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cashier.Service", "Cashier.Service\Cashier.Service.csproj", "{2D8DF944-BAC5-4CE1-807A-6FFCE3C51284}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D3D97918-2C26-4BAE-A0C5-F90B6F1085DD} = {D3D97918-2C26-4BAE-A0C5-F90B6F1085DD}
+		{FC24D38F-FB96-43E1-B21E-B6E1BFA1DC11} = {FC24D38F-FB96-43E1-B21E-B6E1BFA1DC11}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroServices.Common", "..\MicroService-Common\MicroServices.Common\MicroServices.Common.csproj", "{D3D97918-2C26-4BAE-A0C5-F90B6F1085DD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroServices.Common.General", "..\MicroService-Common\MicroServices.Common.General\MicroServices.Common.General.csproj", "{FC24D38F-FB96-43E1-B21E-B6E1BFA1DC11}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D3478255-CB14-4F5D-AC78-2E48B5EC2439}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3478255-CB14-4F5D-AC78-2E48B5EC2439}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3478255-CB14-4F5D-AC78-2E48B5EC2439}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3478255-CB14-4F5D-AC78-2E48B5EC2439}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1ECFB12-A337-49FF-AD09-304B5292A548}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1ECFB12-A337-49FF-AD09-304B5292A548}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1ECFB12-A337-49FF-AD09-304B5292A548}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1ECFB12-A337-49FF-AD09-304B5292A548}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D8DF944-BAC5-4CE1-807A-6FFCE3C51284}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D8DF944-BAC5-4CE1-807A-6FFCE3C51284}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D8DF944-BAC5-4CE1-807A-6FFCE3C51284}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D8DF944-BAC5-4CE1-807A-6FFCE3C51284}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3D97918-2C26-4BAE-A0C5-F90B6F1085DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3D97918-2C26-4BAE-A0C5-F90B6F1085DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3D97918-2C26-4BAE-A0C5-F90B6F1085DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3D97918-2C26-4BAE-A0C5-F90B6F1085DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC24D38F-FB96-43E1-B21E-B6E1BFA1DC11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC24D38F-FB96-43E1-B21E-B6E1BFA1DC11}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC24D38F-FB96-43E1-B21E-B6E1BFA1DC11}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC24D38F-FB96-43E1-B21E-B6E1BFA1DC11}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D3478255-CB14-4F5D-AC78-2E48B5EC2439} = {996FE8C5-4EBF-4CF9-9A6C-7A21F23A4B94}
+		{B1ECFB12-A337-49FF-AD09-304B5292A548} = {BB388DD9-BEE8-4755-952E-0F51CA60AAC1}
+		{2D8DF944-BAC5-4CE1-807A-6FFCE3C51284} = {E4FA608F-F4B2-41AA-B819-3BAC53839407}
+	EndGlobalSection
+EndGlobal

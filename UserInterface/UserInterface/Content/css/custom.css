@@ -1,0 +1,41 @@
+/**
+ *
+ * Apply your custom CSS here
+ *
+*/
+
+body {    
+}
+
+.panel-body > .row {
+    margin-bottom: 10px;
+}
+
+.panel-body > .row > .content {
+    border:  1px solid #ccc;
+    padding: 10px;
+}
+
+.form-horizontal input.ng-invalid.ng-dirty {
+        border-color: #FA787E;
+    }
+
+    .form-horizontal input.ng-valid.ng-dirty {
+        border-color: #78FA89;
+    }
+
+    .help-ok {
+        color: green;
+    }
+
+    .help-broken {
+        color: red;
+    }
+
+    .help-container span {
+        line-height: 34px;
+    }
+
+.vertical-spacer {
+    min-height: 15px;
+}

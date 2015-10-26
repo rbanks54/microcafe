@@ -1,0 +1,57 @@
+﻿{
+    "Framework": "jasmine",
+    "TestHarnessLocationMode": "SettingsFileAdjacent",
+    "References": [
+        { "Path": "../Scripts/jasmine/jasmine.js" },
+        { "Path": "../Scripts/angular.js" },
+        { "Path": "../Scripts/angular-route.js" },
+        { "Path": "../Scripts/angular-cookies.js" },
+        { "Path": "../Scripts/angular-resource.js" },
+        { "Path": "../Scripts/angular-mocks.js" },
+        { "Path": "../scripts/angular-ui/ui-bootstrap.js" },
+        { "Path": "../scripts/angular-ui-router.js" },
+        { "Path": "../scripts/oc-lazyload/ocLazyLoad.js" },
+        { "Path": "../scripts/xenon/angular-fullscreen.js" },
+        { "Path": "../Content/js/drop-and-drag/angular-drag-and-drop-lists.min.js" },
+        { "Path": "../content/js/jquery-1.11.1.min.js" },
+        { "Path": "../scripts/xenon/xenon-helper.js" },
+        { "Path": "../scripts/xenon/xenon-custom.js" },
+        { "Path": "../apps/common/module.js" },
+        { "Path": "../apps/common/js/services/alerting.js" },
+        { "Path": "../apps/shell/app-module.js" },
+        { "Path": "../apps/shell/app-controllers.js" },
+        { "Path": "../apps/shell/app-directives.js" },
+        { "Path": "../apps/shell/app-factory.js" },
+        { "Path": "../apps/shell/app-services.js" },
+        { "Path": "../apps/shell/app-config.js" },
+
+        { "Path": "../apps/journeydesigner/controllers/products.js" },
+        { "Path": "../apps/journeydesigner/services/products.js" },
+        { "Path": "../apps/journeydesigner/controllers/itineraries.js" },
+        { "Path": "../apps/journeydesigner/services/itineraries.js" },
+        { "Path": "../apps/journeydesigner/services/days.js" },
+        { "Path": "../apps/JourneyDesigner/directives/focusElement.js" },
+        { "Path": "../apps/MasterData/services/brands.js" },
+        { "Path": "../apps/MasterData/controllers/brands.js" },
+        { "Path": "../apps/MasterData/services/operators.js" },
+        { "Path": "../apps/MasterData/controllers/operators.js" },
+    ],
+    "Tests": [
+        {
+            "Path": "./JourneyDesigner/controllers",
+            "Include": "*.js"
+        },
+        {
+            "Path": "./JourneyDesigner/services",
+            "Include": "*.js"
+        },
+        {
+            "Path": "./MasterData/controllers",
+            "Include": "*.js"
+        },
+        {
+            "Path": "./MasterData/services",
+            "Include": "*.js"
+        },
+    ]
+}

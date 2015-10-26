@@ -1,0 +1,103 @@
+# For more, see https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
+#OS junk files
+[Tt]humbs.db
+*.DS_Store
+
+#Visual Studio files
+*.[Oo]bj
+*.user
+*.aps
+*.pch
+*.vspscc
+*.vssscc
+*_i.c
+*_p.c
+*.ncb
+*.suo
+*.tlb
+*.tlh
+*.bak
+*.[Cc]ache
+*.ilk
+*.log
+*.lib
+*.sbr
+*.sdf
+*.opensdf
+*.tmp
+*.tmp_proj
+[Dd]ebug*/
+[Rr]elease*/
+[Dd]ebugPublic/
+x64/
+x86/
+build/
+bld/
+[Bb]in/
+[Oo]bj/
+.vs/
+
+*.userosscache
+*.sln.docstates
+
+#Tooling
+_ReSharper*/
+*.resharper
+[Tt]est[Rr]esult*
+*.DotSettings.user
+
+# TeamCity is a build add-in
+_TeamCity*
+
+# NuGet Packages
+!NuGet.exe
+*.nupkg
+# The packages folder can be ignored because of Package Restore
+**/packages/*
+# except build/, which is used as an MSBuild target.
+!**/packages/build/
+# Uncomment if necessary however generally it will be regenerated when needed
+#!**/packages/repositories.config
+Packages*/
+#Project files
+#[Bb]uild/
+
+# Click-Once directory
+publish/
+
+# Publish Web Output
+*.[Pp]ublish.xml
+*.azurePubxml
+*.pubxml
+*.publishproj
+
+#Subversion files
+.svn
+
+# Office Temp Files
+~$*
+
+#VSCode
++.vscode
+Code
+
+# User-specific files (MonoDevelop/Xamarin Studio)
+*.userprefs
+
+# DNX
+project.lock.json
+artifacts/
+
+# Chutzpah Test files
+_Chutzpah*
+
+# Visual Studio profiler
+*.psess
+*.vsp
+*.vspx
+*.sap
+
+# SQL Server files
+*.mdf
+*.ldf
+

@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+    <PropertyGroup>
+        <!-- Storing paths to tools in properties is good practice -->
+        <PhantomJsExe>$(MSBuildProjectDirectory)\tools\phantomjs-2.0.0\phantomjs.exe</PhantomJsExe>
+    </PropertyGroup>
+
+    <Target Name="JsTests">
+        <Exec Command="$(PhantomJsExe) spec_runner.js"
+              WorkingDirectory="UserInterface\" />
+    </Target>
+</Project>

@@ -1,0 +1,177 @@
+
+<page-title ng-if="layoutOptions.pageTitles" title="{{title}}" description="Adjust the properties of the itinerary."></page-title>
+
+<div class="row">
+    <div class="col-md-12">
+
+        <!-- Default panel -->
+        <div class="panel panel-default">
+            <div class="panel-heading" ng-show="false">
+                <span ng-show="formMode==='Edit'"><i class="glyphicon glyphicon-edit"></i> Currently Editing Itineray: '{{itinerary.name}}' v{{ itinerary.version }}</span>
+                <span ng-show="formMode==='Add'"><i class="glyphicon glyphicon-edit"></i> Currently Adding new Itineray: </span>
+            </div>
+
+            <div class="panel-body">
+
+                <form role="form" name="myForm" class="form-horizontal">
+                    <div class="row">
+
+                        <div class="form-group" ng-show="itinerary.isDeleted == true">
+                            <h3 class="col-md-10 col-xs-offset-2"> <i class="fa-warning"></i> Warning, this itinerary has been deleted</h3>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-2"> Product *</label>
+                            <div class="col-md-4">
+                                <select id="productSelector" name="product"
+                                        ng-model="itinerary.product"
+                                        ng-options="product.displayName for product in products track by product.id"
+                                        class="form-control"
+                                        required
+                                        ng-change="checkDefaultName()">
+                                </select>
+                            </div>
+                            <div class="col-md-4 help-container">
+                                <span ng-show="myForm.productId.$dirty && !myForm.productId.$invalid" class="help-inline help-ok"><i class="glyphicon glyphicon-ok"></i> looks good</span>
+                                <span ng-show="myForm.productId.$invalid" class="help-inline help-broken"><i class="glyphicon glyphicon-remove"></i> Product required</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group" ng-class="{error: myForm.name.$invalid}">
+                            <label class="col-md-2"> Name *</label>
+                            <div class="col-md-4">
+                                <input name="name" ng-model="itinerary.name" type="text" class="form-control" placeholder="Itinerary name" required/>
+                            </div>
+                            <div class="col-md-4 help-container">
+                                <span ng-show="myForm.name.$dirty && !myForm.name.$invalid" class="help-inline help-ok"><i class="glyphicon glyphicon-ok"></i> Code looks good</span>
+                                <span ng-show="myForm.name.$dirty && myForm.name.$invalid" class="help-inline help-broken"><i class="glyphicon glyphicon-remove"></i> Code required</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group" ng-class="{error: myForm.version.$invalid}" ng-show="false">
+                            <label class="col-md-2"> Version </label>
+                            <div class="col-md-4">
+                                <input name="version" ng-model="itinerary.version" type="text" class="form-control" placeholder="Itinerary version"/>
+                            </div>
+                            <div class="col-md-4 help-container">
+                                <span ng-show="myForm.version.$dirty && !myForm.version.$invalid" class="help-inline help-ok"><i class="glyphicon glyphicon-ok"></i> version looks good</span>
+                                <span ng-show="myForm.version.$invalid" class="help-inline help-broken"><i class="glyphicon glyphicon-remove"></i> version required</span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="col-md-2"> Season </label>
+                            <div class="col-md-4">
+                                <select id="seasonSelector" name="season"
+                                        ng-model="itinerary.season"
+                                        ng-options="season.displayName for season in seasons track by season.id"
+                                        class="form-control">
+                                </select>
+                            </div>
+                            <div class="col-md-4 help-container">
+                                <span ng-show="myForm.seasonId.$dirty && !myForm.seasonId.$invalid" class="help-inline help-ok"><i class="glyphicon glyphicon-ok"></i> looks good</span>
+                                <span ng-show="myForm.seasonId.$invalid" class="help-inline help-broken"><i class="glyphicon glyphicon-remove"></i> Season required</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-2"> Brand </label>
+                            <div class="col-md-4">
+                                <select id="brandSelector" name="brand"
+                                        ng-model="itinerary.brand"
+                                        ng-options="brand.displayName for brand in brands track by brand.id"
+                                        class="form-control">
+                                </select>
+                            </div>
+                            <div class="col-md-4 help-container">
+                                <span ng-show="myForm.brandId.$dirty && !myForm.brandId.$invalid" class="help-inline help-ok"><i class="glyphicon glyphicon-ok"></i> looks good</span>
+                                <span ng-show="myForm.brandId.$invalid" class="help-inline help-broken"><i class="glyphicon glyphicon-remove"></i> Brand required</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-2"> Operator </label>
+                            <div class="col-md-4">
+                                <select id="operatorSelector" name="operator"
+                                        ng-model="itinerary.operator"
+                                        ng-options="operator.displayName for operator in operators track by operator.id"
+                                        class="form-control">
+                                </select>
+                            </div>
+                            <div class="col-md-4 help-container">
+                                <span ng-show="myForm.operatorId.$dirty && !myForm.operatorId.$invalid" class="help-inline help-ok"><i class="glyphicon glyphicon-ok"></i> looks good</span>
+                                <span ng-show="myForm.operatorId.$invalid" class="help-inline help-broken"><i class="glyphicon glyphicon-remove"></i> Operator required</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-2"></label>
+                            <div class="col-md-4">
+
+                                <button ng-click="saveItinerary(itinerary);"
+                                        ng-disabled="isClean() || myForm.$invalid"
+                                        ng-show="itinerary.isDeleted == false"
+                                        class="btn btn-primary">
+                                    {{buttonText}}
+                                </button>
+                                <a href="#/app/itineraries-index" class="btn btn-link">Back to list</a>
+                                <button ng-click="confirmDeleteItinerary(itinerary)"
+                                        ng-show="formMode==='Update' && itinerary.isDeleted == false" class="btn btn-link text-danger">
+                                    Delete
+                                </button>
+                            </div>
+                            <div class="col-md-4 help-container">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+                <!-- Debugging Items -->
+                <div class="row" ng-show="false">
+                    <pre>{{ myForm | json }}</pre>
+                </div>
+                <div class="row" ng-show="false">
+                    <pre>{{ itinerary | json }}</pre>
+                </div>
+                <div class="row" ng-show="false">
+                    <pre>{{ operators | json }}</pre>
+                </div>
+                <div class="row" ng-show="false">
+                    <pre>{{ brands | json }}</pre>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+    // what do you want to do on page load?
+    jQuery(document).ready(function ($) {
+        //$("#brandSelector").select2({
+        //    placeholder: 'Select your brand...',
+        //    allowClear: true
+        //}).on('select2-open', function () {
+        //    // Adding Custom Scrollbar
+        //    $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
+        //});
+
+        //$("#seasonSelector").select2({
+        //    placeholder: 'Select your season...',
+        //    allowClear: true
+        //}).on('select2-open', function () {
+        //    // Adding Custom Scrollbar
+        //    $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
+        //});
+
+        //$("#productSelector").select2({
+        //    placeholder: 'Select your product...',
+        //    allowClear: true
+        //}).on('select2-open', function () {
+        //    // Adding Custom Scrollbar
+        //    $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
+        //});
+    });
+</script>

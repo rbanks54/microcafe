@@ -1,0 +1,12 @@
+---
+ExtHttpPort: 2802
+IntHttpPort: 2803
+ClusterGossipPort: 38702
+ExtTcpPort: 3902
+IntTcpPort: 3903
+Db: ..\Cashier\Data
+Log: ..\Cashier\Logs
+DiscoverViaDns: false
+ClusterSize: 1
+RunProjections: none
+---
