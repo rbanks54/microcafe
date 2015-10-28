@@ -2,13 +2,13 @@
 using System.Web.Http;
 using EventStore.ClientAPI;
 using Owin;
-using Cashier.Service.Config;
-using Cashier.Service.MicroServices.Brand.Handlers;
+using Admin.Common.Clients;
+using Admin.Service.MicroServices.Products.Handlers;
 using MicroServices.Common.MessageBus;
 using MicroServices.Common.Repository;
 using EasyNetQ;
 
-namespace Cashier.Service
+namespace Admin.Service
 {
     internal class Startup
     {
@@ -17,6 +17,13 @@ namespace Cashier.Service
             var webApiConfiguration = ConfigureWebApi();
             app.UseWebApi(webApiConfiguration);
             ConfigureHandlers();
+            LoadExternalData();
+        }
+
+        private void LoadExternalData()
+        {
+            IAdminClient masterDataClient = new AdminClient();
+            masterDataClient.Initialise();
         }
 
         private static HttpConfiguration ConfigureWebApi()
@@ -26,7 +33,10 @@ namespace Cashier.Service
             // Enable Web API Attribute Routing
             config.MapHttpAttributeRoutes();
 
-            config.Routes.MapHttpRoute("DefaultApi", "api/{controller}/{id}", new {id = RouteParameter.Optional});
+            config.Routes.MapHttpRoute(
+                "DefaultApi",
+                "api/{controller}/{id}",
+                new { id = RouteParameter.Optional });
             return config;
         }
 
@@ -35,13 +45,12 @@ namespace Cashier.Service
             var bus = new RabbitMqBus(RabbitHutch.CreateBus("host=localhost"));
             ServiceLocator.Bus = bus;
 
-            var eventStorePort = 3302;
-
-            var eventStoreConnection = EventStoreConnection.Create(new IPEndPoint(IPAddress.Loopback, eventStorePort));
+            //Should get this from a config setting instead of hardcoding it.
+            var eventStoreConnection = EventStoreConnection.Create(new IPEndPoint(IPAddress.Loopback, 3300));
             eventStoreConnection.ConnectAsync().Wait();
             var repository = new EventStoreRepository(eventStoreConnection, bus);
-
-            ServiceLocator.BrandCommands = new OrderCommandHandlers(repository);
+            
+            ServiceLocator.ProductCommands = new ProductCommandHandlers(repository);
         }
     }
 }

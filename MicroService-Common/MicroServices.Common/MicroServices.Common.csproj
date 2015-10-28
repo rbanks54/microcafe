@@ -33,8 +33,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EasyNetQ, Version=0.50.10.403, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\EasyNetQ.0.50.10.403\lib\net40\EasyNetQ.dll</HintPath>
+    <Reference Include="EasyNetQ, Version=0.50.12.407, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\Admin\packages\EasyNetQ.0.50.12.407\lib\net40\EasyNetQ.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="EventStore.ClientAPI, Version=3.2.1.0, Culture=neutral, processorArchitecture=MSIL">

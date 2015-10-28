@@ -1,0 +1,11 @@
+---
+ExtHttpPort: 2800
+IntHttpPort: 2801
+ClusterGossipPort: 38700
+ExtTcpPort: 3900
+IntTcpPort: 3901
+Db: ..\Barista\Data
+Log: ..\Barista\Logs
+DiscoverViaDns: false
+ClusterSize: 1
+---

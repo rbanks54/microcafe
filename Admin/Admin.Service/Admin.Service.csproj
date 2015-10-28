@@ -7,8 +7,8 @@
     <ProjectGuid>{4EF4FA1A-483A-4F5C-9A98-012BE17B7672}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Barista.Service</RootNamespace>
-    <AssemblyName>Barista.Service</AssemblyName>
+    <RootNamespace>Admin.Service</RootNamespace>
+    <AssemblyName>Admin.Service</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -112,7 +112,6 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-    <None Include="Barista.Service.nuspec" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\MicroService-Common\MicroServices.Common.General\MicroServices.Common.General.csproj">
@@ -123,9 +122,9 @@
       <Project>{d3d97918-2c26-4bae-a0c5-f90b6f1085dd}</Project>
       <Name>MicroServices.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Barista.Common\Barista.Common.csproj">
+    <ProjectReference Include="..\Admin.Common\Admin.Common.csproj">
       <Project>{5e571774-1d77-4f79-af04-27a85dac1340}</Project>
-      <Name>Barista.Common</Name>
+      <Name>Admin.Common</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

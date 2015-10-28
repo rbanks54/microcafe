@@ -211,7 +211,6 @@
     <Content Include="apps\shell\views\layout\sidebar-menu.html" />
     <Content Include="apps\shell\views\layout\sidebar-profile.html" />
     <Content Include="apps\shell\views\layout\user-info-navbar.html" />
-    <Content Include="apps\ReadMe.txt" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -1277,12 +1276,6 @@
     <Content Include="Scripts\xenon\TweenMax.min.js" />
     <Content Include="Scripts\xenon\xenon-custom.js" />
     <Content Include="Scripts\xenon\xenon-helper.js" />
-    <Content Include="tests\JourneyDesigner\controllers\itineraries_list.js" />
-    <Content Include="tests\JourneyDesigner\controllers\itineraries_view.js" />
-    <Content Include="tests\JourneyDesigner\controllers\products.js" />
-    <Content Include="tests\JourneyDesigner\services\itineraries.js" />
-    <Content Include="tests\JourneyDesigner\services\products.js" />
-    <Content Include="tests\MasterData\controllers\brands.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -1332,11 +1325,11 @@
     <Compile Include="Gateway\JourneryDesigner\Services\ItinerariesService.cs" />
     <Compile Include="Gateway\JourneryDesigner\Services\IItinerariesService.cs" />
     <Compile Include="Gateway\JourneryDesigner\Services\IProductsService.cs" />
-    <Compile Include="Gateway\MasterData\Services\BrandService.cs" />
-    <Compile Include="Gateway\MasterData\Services\OperatorService.cs" />
-    <Compile Include="Gateway\MasterData\Services\IOperatorService.cs" />
-    <Compile Include="Gateway\MasterData\Services\Dummies\BrandService_Dummy.cs" />
-    <Compile Include="Gateway\MasterData\Services\IBrandService.cs" />
+    <Compile Include="Gateway\Cashier\Services\BrandService.cs" />
+    <Compile Include="Gateway\Cashier\Services\OperatorService.cs" />
+    <Compile Include="Gateway\Cashier\Services\IOperatorService.cs" />
+    <Compile Include="Gateway\Cashier\Services\Dummies\BrandService_Dummy.cs" />
+    <Compile Include="Gateway\Cashier\Services\IBrandService.cs" />
     <Compile Include="Gateway\JourneryDesigner\Services\ProductsService.cs" />
     <Compile Include="Gateway\JourneryDesigner\Services\ReferenceDataService.cs" />
     <Compile Include="Gateway\JourneryDesigner\CommandResponses\Itinerary\DeleteItineraryResponse.cs" />
@@ -1355,24 +1348,24 @@
     <Compile Include="Gateway\JourneryDesigner\Entities\ItineraryDto.cs" />
     <Compile Include="Gateway\JourneryDesigner\Entities\DayDto.cs" />
     <Compile Include="Gateway\JourneryDesigner\Entities\DayItineraryDto.cs" />
-    <Compile Include="Gateway\MasterData\CommandResponses\AlterOperatorResponse.cs" />
-    <Compile Include="Gateway\MasterData\CommandResponses\ArchiveOperatorResponse.cs" />
-    <Compile Include="Gateway\MasterData\CommandResponses\DeleteOperatorResponse.cs" />
-    <Compile Include="Gateway\MasterData\CommandResponses\CreateOperatorResponse.cs" />
-    <Compile Include="Gateway\MasterData\CommandResponses\CreateBrandResponse.cs" />
-    <Compile Include="Gateway\MasterData\CommandResponses\AlterBrandResponse.cs" />
-    <Compile Include="Gateway\MasterData\Commands\AlterOperatorCommand.cs" />
-    <Compile Include="Gateway\MasterData\Commands\ArchiveOperatorCommand.cs" />
-    <Compile Include="Gateway\MasterData\Commands\DeleteOperatorCommand.cs" />
-    <Compile Include="Gateway\MasterData\Commands\CreateOperatorCommand.cs" />
-    <Compile Include="Gateway\MasterData\Commands\CreateBrandCommand.cs" />
-    <Compile Include="Gateway\MasterData\Commands\AlterBrandCommand.cs" />
-    <Compile Include="Gateway\MasterData\Entities\BrandDto.cs" />
+    <Compile Include="Gateway\Cashier\CommandResponses\AlterOperatorResponse.cs" />
+    <Compile Include="Gateway\Cashier\CommandResponses\ArchiveOperatorResponse.cs" />
+    <Compile Include="Gateway\Cashier\CommandResponses\DeleteOperatorResponse.cs" />
+    <Compile Include="Gateway\Cashier\CommandResponses\CreateOperatorResponse.cs" />
+    <Compile Include="Gateway\Cashier\CommandResponses\CreateBrandResponse.cs" />
+    <Compile Include="Gateway\Cashier\CommandResponses\AlterBrandResponse.cs" />
+    <Compile Include="Gateway\Cashier\Commands\AlterOperatorCommand.cs" />
+    <Compile Include="Gateway\Cashier\Commands\ArchiveOperatorCommand.cs" />
+    <Compile Include="Gateway\Cashier\Commands\DeleteOperatorCommand.cs" />
+    <Compile Include="Gateway\Cashier\Commands\CreateOperatorCommand.cs" />
+    <Compile Include="Gateway\Cashier\Commands\CreateBrandCommand.cs" />
+    <Compile Include="Gateway\Cashier\Commands\AlterBrandCommand.cs" />
+    <Compile Include="Gateway\Cashier\Entities\BrandDto.cs" />
     <Compile Include="Gateway\JourneryDesigner\Entities\SeasonDto.cs" />
     <Compile Include="Gateway\JourneryDesigner\Entities\OwnerDto.cs" />
     <Compile Include="Gateway\JourneryDesigner\Entities\OperatorDto.cs" />
     <Compile Include="Gateway\JourneryDesigner\Entities\ProductDto.cs" />
-    <Compile Include="Gateway\MasterData\Entities\OperatorDto.cs" />
+    <Compile Include="Gateway\Cashier\Entities\OperatorDto.cs" />
     <Compile Include="Helpers\Extensions\ApiControllerHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -1393,7 +1386,6 @@
     <Content Include="Scripts\angular-aria.min.js.map" />
     <Content Include="Scripts\angular-animate.min.js.map" />
     <Content Include="Scripts\jquery-2.1.4.min.map" />
-    <Content Include="tests\chutzpah.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1405,7 +1397,6 @@
     <Folder Include="apps\JourneyDesigner\filters\" />
     <Folder Include="apps\MasterData\directives\" />
     <Folder Include="Content\images\backgrounds\" />
-    <Folder Include="tests\JourneyDesigner\directives\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

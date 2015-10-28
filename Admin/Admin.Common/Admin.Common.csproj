@@ -4,14 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{FC24D38F-FB96-43E1-B21E-B6E1BFA1DC11}</ProjectGuid>
+    <ProjectGuid>{5E571774-1D77-4F79-AF04-27A85DAC1340}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MicroServices.Common.General</RootNamespace>
-    <AssemblyName>MicroServices.Common.General</AssemblyName>
+    <RootNamespace>Admin.Common</RootNamespace>
+    <AssemblyName>Admin.Common</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\MasterData-Service\</SolutionDir>
+    <TargetFrameworkProfile />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,6 +32,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="NewId, Version=2.1.3.0, Culture=neutral, PublicKeyToken=b8e0e9f2f1e657fa, processorArchitecture=MSIL">
+      <HintPath>..\packages\NewId.2.1.3\lib\net45\NewId.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
@@ -45,23 +50,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Aggregate.cs" />
-    <Compile Include="DynamicForPrivateMembers.cs" />
-    <Compile Include="Event.cs" />
-    <Compile Include="Exceptions\AggregateDeletedException.cs" />
-    <Compile Include="Exceptions\AggregateNotFoundException.cs" />
-    <Compile Include="Exceptions\AggregateVersionException.cs" />
-    <Compile Include="Exceptions\EventDeserializationException.cs" />
-    <Compile Include="Exceptions\ReadModelNotFoundException.cs" />
-    <Compile Include="ICommand.cs" />
-    <Compile Include="IHandle.cs" />
-    <Compile Include="IMessage.cs" />
+    <Compile Include="Dto\ProductDto.cs" />
+    <Compile Include="Events\ProductEvents.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ReadObject.cs" />
-    <Compile Include="Util\EventHandlerDiscovery.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\MicroService-Common\MicroServices.Common.General\MicroServices.Common.General.csproj">
+      <Project>{fc24d38f-fb96-43e1-b21e-b6e1bfa1dc11}</Project>
+      <Name>MicroServices.Common.General</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

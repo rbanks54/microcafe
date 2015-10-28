@@ -14,7 +14,6 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <TargetFrameworkProfile />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
-    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -105,9 +104,9 @@
     <Compile Include="DataTransferObjects\Commands\AlterBrandCommand.cs" />
     <Compile Include="DataTransferObjects\Commands\CreateBrandCommand.cs" />
     <Compile Include="Helpers\ApiControllerHelper.cs" />
-    <Compile Include="MicroServices\Brand\Commands\BrandCommands.cs" />
-    <Compile Include="MicroServices\Brand\Domain\Brand.cs" />
-    <Compile Include="MicroServices\Brand\Handlers\BrandCommandHandlers.cs" />
+    <Compile Include="MicroServices\Order\Commands\OrderCommands.cs" />
+    <Compile Include="MicroServices\Order\Domain\Order.cs" />
+    <Compile Include="MicroServices\Order\Handlers\OrderCommandHandlers.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceLocator.cs" />

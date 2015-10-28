@@ -19,7 +19,7 @@ namespace Cashier.Service.Controllers
                 throw new HttpResponseException(response);
             }
 
-            var command = new CreateBrand(Guid.NewGuid(), cmd.Code, cmd.Name);
+            var command = new PlaceOrder(Guid.NewGuid(), cmd.Code, cmd.Name);
 
             try
             {
@@ -45,7 +45,7 @@ namespace Cashier.Service.Controllers
                 throw new HttpResponseException(response);
             }
 
-            var command = new AlterBrand(id, cmd.Version, cmd.Code, cmd.Name);
+            var command = new AlterOrder(id, cmd.Version, cmd.Code, cmd.Name);
 
             try
             {
