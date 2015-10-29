@@ -18,24 +18,5 @@ namespace Cashier.Service.MicroServices.Brand.Handlers
             var brand = new Domain.Order(message.Id, message.Code, message.Name);
             repository.Save(brand);
         }
-
-        public void Handle(AlterOrder message)
-        {
-            var brand = repository.GetById<Domain.Order>(message.Id);
-
-            int committedVersion = message.OriginalVersion;
-
-            if(!String.Equals(brand.Code, message.NewCode, StringComparison.OrdinalIgnoreCase))
-            {
-                brand.ChangeCode(message.NewCode, committedVersion++);
-            }
-
-            if (!String.Equals(brand.Name, message.NewName, StringComparison.OrdinalIgnoreCase))
-            {
-                brand.ChangeName(message.NewName, committedVersion);
-            }
-            
-            repository.Save(brand);
-        }
     }
 }

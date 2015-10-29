@@ -34,33 +34,5 @@ namespace Cashier.Service.Controllers
                 return BadRequest(argEx.Message );
             }
         }
-
-        [HttpPut]
-        [Route("api/brands/{id:guid}")]
-        public IHttpActionResult Put(Guid id, AlterBrandCommand cmd)
-        {
-            if (string.IsNullOrWhiteSpace(cmd.Code))
-            {
-                var response = new HttpResponseMessage(HttpStatusCode.Forbidden) {Content = new StringContent("code must be supplied in the body"), ReasonPhrase = "Missing brand code"};
-                throw new HttpResponseException(response);
-            }
-
-            var command = new AlterOrder(id, cmd.Version, cmd.Code, cmd.Name);
-
-            try
-            {
-                ServiceLocator.BrandCommands.Handle(command);
-                
-                return Ok(command);
-            }
-            catch (AggregateNotFoundException)
-            {
-                return NotFound();
-            }
-            catch (AggregateDeletedException)
-            {
-                return Conflict();
-            }
-        }
     }
 }
