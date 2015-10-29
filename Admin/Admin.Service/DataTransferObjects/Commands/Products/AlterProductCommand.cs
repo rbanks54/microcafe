@@ -1,16 +1,10 @@
-﻿using Admin.Common.Enums;
-
-namespace Admin.Service.DataTransferObjects.Commands
+﻿namespace Admin.Service.DataTransferObjects.Commands
 {
-    /// <summary>
-    /// WebApi Command Parameters for api/products/renameproduct
-    /// </summary>
     public class AlterProductCommand
     {
-        public string Code { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public ProductType ProductType { get; set; }     
+        public decimal Price { get; set; }
         public int Version { get; set; }
     }
 }

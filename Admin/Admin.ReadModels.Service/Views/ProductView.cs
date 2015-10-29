@@ -12,7 +12,6 @@ namespace Admin.ReadModels.Service.Views
 {
     public class ProductView : ReadModelAggregate,
         IHandle<ProductCreated>,
-        IHandle<ProductCodeChanged>,
         IHandle<ProductDescriptionChanged>,
         IHandle<ProductNameChanged>,
         IHandle<ProductPriceChanged>
@@ -46,19 +45,12 @@ namespace Admin.ReadModels.Service.Views
             var dto = new ProductDto
             {
                 Id = e.Id,
-                Code = e.Code,
                 Name = e.Name,
                 Description = e.Description,
-                ProductType = e.ProductType,
+                Price = e.Price,
                 Version = e.Version
             };
             repository.Insert(dto);
-        }
-        public void Apply(ProductCodeChanged e)
-        {
-            var product = GetById(e.Id);
-            product.Code = e.NewCode;
-            product.Version = e.Version;
         }
         public void Apply(ProductNameChanged e)
         {
@@ -77,7 +69,7 @@ namespace Admin.ReadModels.Service.Views
         public void Apply(ProductPriceChanged e)
         {
             var product = GetById(e.Id);
-            product.ProductType = e.NewProductType;
+            product.Price = e.NewPrice;
             product.Version = e.Version;
             repository.Update(product);
         }

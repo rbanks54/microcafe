@@ -1,7 +1,6 @@
 ﻿using System.Net;
 using System.Web.Http;
 using Owin;
-using Admin.Common.Clients;
 using MicroServices.Common.MessageBus;
 using MicroServices.Common.Repository;
 using Admin.ReadModels.Service.Views;
@@ -27,7 +26,6 @@ namespace Admin.ReadModels.Service
             webApiConfiguration.EnsureInitialized();
             app.UseWebApi(webApiConfiguration);
             ConfigureHandlers();
-            ConfigureExternalData();
         }
 
         private static HttpConfiguration ConfigureWebApi()
@@ -48,15 +46,12 @@ namespace Admin.ReadModels.Service
             var productView = new ProductView(new RedisReadModelRepository<ProductDto>(redis.GetDatabase()));
             ServiceLocator.ProductView = productView;
 
-            IAdminClient masterDataClient = new AdminClient();
-
             var eventMappings = new EventHandlerDiscovery()
                                 .Scan(productView)
                                 .Handlers;
 
-            var subscriptionName = "journeydesigner_readmodel";
-            var topicFilter1 = "MasterData.Common.Events";
-            var topicFilter2 = "Admin.Common.Events";
+            var subscriptionName = "admin_readmodel";
+            var topicFilter1 = "Admin.Common.Events";
 
             var b = RabbitHutch.CreateBus("host=localhost");
 
@@ -72,17 +67,11 @@ namespace Admin.ReadModels.Service
                     handler.AsDynamic().ApplyEvent(@event, ((Event)@event).Version);
                 }
             },
-            q => q.WithTopic(topicFilter1).WithTopic(topicFilter2));
+            q => q.WithTopic(topicFilter1));
 
             var bus = new RabbitMqBus(b);
 
             ServiceLocator.Bus = bus;
-        }
-
-        private void ConfigureExternalData()
-        {
-            IAdminClient masterDataClient = new AdminClient();
-            masterDataClient.Initialise();
         }
     }
 }

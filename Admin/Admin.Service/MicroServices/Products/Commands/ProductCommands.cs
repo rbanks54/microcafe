@@ -1,5 +1,4 @@
 ﻿using System;
-using Admin.Common.Enums;
 using MicroServices.Common;
 
 namespace Admin.Service.MicroServices.Products.Commands

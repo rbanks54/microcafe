@@ -27,7 +27,7 @@ namespace Admin.Service.Controllers
         public IHttpActionResult Post(CreateProductCommand cmd)
         {
             // TODO: is this to be handled here or in the Aggregate?
-            if (string.IsNullOrWhiteSpace(cmd.Code))
+            if (string.IsNullOrWhiteSpace(cmd.Name))
             {
                 var response = new HttpResponseMessage(HttpStatusCode.Forbidden)
                 {
@@ -39,7 +39,7 @@ namespace Admin.Service.Controllers
             
             try
             {
-                var command = new CreateProduct(Guid.NewGuid(), cmd.Code, cmd.Name, cmd.Description, cmd.ProductType);
+                var command = new CreateProduct(Guid.NewGuid(), cmd.Name, cmd.Description, cmd.Price);
                 handler.Handle(command);
 
                 var link = new Uri(string.Format("http://localhost:8181/api/products/{0}", command.Id));
@@ -60,7 +60,7 @@ namespace Admin.Service.Controllers
         public IHttpActionResult Put(Guid id, AlterProductCommand cmd)
         {
             // TODO: is this to be handled here or in the Aggregate?
-            if (string.IsNullOrWhiteSpace(cmd.Code))
+            if (string.IsNullOrWhiteSpace(cmd.Name))
             {
                 var response = new HttpResponseMessage(HttpStatusCode.Forbidden)
                 {
@@ -72,7 +72,7 @@ namespace Admin.Service.Controllers
             
             try
             {
-                var command = new AlterProduct(id, cmd.Version, cmd.Code, cmd.Name, cmd.Description, cmd.ProductType);
+                var command = new AlterProduct(id, cmd.Version, cmd.Name, cmd.Description, cmd.Price);
                 handler.Handle(command);
 
                 return Ok(command);

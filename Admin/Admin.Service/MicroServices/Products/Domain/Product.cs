@@ -1,6 +1,4 @@
 ﻿using System;
-using Admin.Common.Clients;
-using Admin.Common.Enums;
 using Admin.Common.Events;
 using MicroServices.Common;
 
@@ -10,34 +8,28 @@ namespace Admin.Service.MicroServices.Products.Domain
     {
         private Product() { }
 
-        public Product(Guid id, string name, string title, string description, ProductType type)
+        public Product(Guid id, string name, string description, decimal price)
         {
-            ValidateCode(name);
+            ValidateName(name);
 
-            ApplyEvent(new ProductCreated(id, name, title, description, type));
+            ApplyEvent(new ProductCreated(id, name, description, price));
         }
 
-        public string Code { get; private set; }
         public string Name { get; private set; }
         public string Description { get; private set; }
-        public ProductType Type { get; set; }
-        
+        public decimal Price { get; set; }
+
         private void Apply(ProductCreated e)
         {
             Id = e.Id;
-            Code = e.Code;
             Name = e.Name;
             Description = e.Description;
-        }
-
-        private void Apply(ProductCodeChanged e)
-        {
-            Code = e.NewCode;
+            Price = e.Price;
         }
 
         private void Apply(ProductPriceChanged e)
         {
-            Type = e.NewProductType;
+            Price = e.NewPrice;
         }
 
         private void Apply(ProductDescriptionChanged e)
@@ -50,19 +42,12 @@ namespace Admin.Service.MicroServices.Products.Domain
             Name = e.NewName;
         }
 
-        public void ChangeCode(string newCode, int originalVersion)
+        public void ChangeName(string newName, int originalVersion)
         {
-            ValidateCode(newCode);
+            ValidateName(newName);
             ValidateVersion(originalVersion);
 
-            ApplyEvent(new ProductCodeChanged(Id, newCode));
-        }
-
-        public void ChangeTitle(string newTitle, int originalVersion)
-        {
-            ValidateVersion(originalVersion);
-
-            ApplyEvent(new ProductNameChanged(Id, newTitle));
+            ApplyEvent(new ProductNameChanged(Id, newName));
         }
 
         public void ChangeDescription(string newDescription, int originalVersion)
@@ -72,18 +57,18 @@ namespace Admin.Service.MicroServices.Products.Domain
             ApplyEvent(new ProductDescriptionChanged(Id, newDescription));
         }
 
-        public void ChangeType(ProductType newType, int originalVersion)
+        public void ChangePrice(decimal newPrice, int originalVersion)
         {
             ValidateVersion(originalVersion);
 
-            ApplyEvent(new ProductPriceChanged(Id, newType));
+            ApplyEvent(new ProductPriceChanged(Id, newPrice));
         }
 
-        void ValidateCode(string code)
+        void ValidateName(string name)
         {
-            if (string.IsNullOrWhiteSpace(code))
+            if (string.IsNullOrWhiteSpace(name))
             {
-                throw new ArgumentException("Invalid code specified: cannot be empty.", "code");
+                throw new ArgumentException("Invalid name specified: cannot be empty.", "name");
             }
         }
 

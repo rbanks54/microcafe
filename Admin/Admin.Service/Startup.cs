@@ -2,7 +2,6 @@
 using System.Web.Http;
 using EventStore.ClientAPI;
 using Owin;
-using Admin.Common.Clients;
 using Admin.Service.MicroServices.Products.Handlers;
 using MicroServices.Common.MessageBus;
 using MicroServices.Common.Repository;
@@ -17,13 +16,6 @@ namespace Admin.Service
             var webApiConfiguration = ConfigureWebApi();
             app.UseWebApi(webApiConfiguration);
             ConfigureHandlers();
-            LoadExternalData();
-        }
-
-        private void LoadExternalData()
-        {
-            IAdminClient masterDataClient = new AdminClient();
-            masterDataClient.Initialise();
         }
 
         private static HttpConfiguration ConfigureWebApi()

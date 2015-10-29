@@ -20,7 +20,7 @@ namespace Admin.Service.MicroServices.Products.Handlers
             ProductDto existingProduct = null;
             
             // Process
-            var series = new Products.Domain.Product(message.Id, message.Code, message.Name, message.Description, message.ProductType);
+            var series = new Products.Domain.Product(message.Id, message.Name, message.Description, message.Price);
             repository.Save(series);
         }
 
@@ -30,14 +30,9 @@ namespace Admin.Service.MicroServices.Products.Handlers
 
             int committedVersion = message.OriginalVersion;
 
-            if (!String.Equals(product.Code, message.NewCode, StringComparison.OrdinalIgnoreCase))
-            {
-                product.ChangeCode(message.NewCode, committedVersion++);
-            }
-
             if (!String.Equals(product.Name, message.NewTitle, StringComparison.OrdinalIgnoreCase))
             {
-                product.ChangeTitle(message.NewTitle, committedVersion++);
+                product.ChangeName(message.NewTitle, committedVersion++);
             }
 
             if (!String.Equals(product.Description, message.NewDescription, StringComparison.OrdinalIgnoreCase))
@@ -45,9 +40,9 @@ namespace Admin.Service.MicroServices.Products.Handlers
                 product.ChangeDescription(message.NewDescription, committedVersion++);
             }
 
-            if (message.NewProductType != product.Type)
+            if (message.NewPrice != product.Price)
             {
-                product.ChangeType(message.NewProductType, committedVersion);
+                product.ChangePrice(message.NewPrice, committedVersion);
             }
 
             repository.Save(product);
