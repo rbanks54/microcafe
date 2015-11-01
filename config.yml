@@ -1,0 +1,11 @@
+---
+ExtHttpPort: 12800
+IntHttpPort: 12801
+ClusterGossipPort: 12700
+ExtTcpPort: 12900
+IntTcpPort: 12901
+Db: ..\MicroCafe\Data
+Log: ..\MicroCafe\Logs
+DiscoverViaDns: false
+ClusterSize: 1
+---

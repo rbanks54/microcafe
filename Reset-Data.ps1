@@ -1,14 +1,15 @@
 Param(
+  $Clear = "all",
   $EventStoreServerLocation = "c:\eventstore\server",
-  $RedisInstallLocation = "C:\Program Files\Redis",
-  $Clear = "all"
+  $RedisInstallLocation = "C:\Program Files\Redis"
 )
+
 If("all","eventstore","redis" -NotContains $Clear)
 {
 	Throw "$($Clear) is not a valid value. Please use eventstore, redis or all"
 }
 
-$eventStores = @("Cashier","Barista")
+$eventStores = @("MicroCafe")
 
 If (-NOT ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator"))
 {   
@@ -37,5 +38,4 @@ If(!($Clear -eq "eventstore"))
 	$redisCli = Join-Path $RedisInstallLocation "redis-cli.exe"
 	$redisArgs = "flushdb"
 	Start-Process $redisCli -ArgumentList $redisArgs
-
 }

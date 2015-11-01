@@ -24,5 +24,4 @@ Function StartEventStore($configFile)
 	Start-Process -WorkingDirectory $eventStoreServerLocation -FilePath $eventStoreExe -ArgumentList $arguments
 }
 
-StartEventStore("\Barista\Barista.Service\config.yml");
-StartEventStore("\Cashier\Cashier.Service\config.yml");
+StartEventStore("config.yml");
