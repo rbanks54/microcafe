@@ -35,7 +35,7 @@ namespace Cashier.Service
             var bus = new RabbitMqBus(RabbitHutch.CreateBus("host=localhost"));
             ServiceLocator.Bus = bus;
 
-            var eventStorePort = 3302;
+            var eventStorePort = 12900;
 
             var eventStoreConnection = EventStoreConnection.Create(new IPEndPoint(IPAddress.Loopback, eventStorePort));
             eventStoreConnection.ConnectAsync().Wait();

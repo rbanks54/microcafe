@@ -1,6 +1,6 @@
 ﻿"use strict";
 
-var app = angular.module("journeyDesigner-app", [
+var app = angular.module("microcafe-app", [
     "common",
     "ngCookies",
     "ngRoute",

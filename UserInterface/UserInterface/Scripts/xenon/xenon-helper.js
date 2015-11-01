@@ -4,14 +4,12 @@
     assetsDir: '/content',
     appDir: '/apps/JourneyDesigner',
     
-    shellTemplateDir: 'views',
     shellDir: '/apps/shell',
 
     journeyDesignerDir: '/apps/JourneyDesigner',
-    journeyDesignerTemplateDir: 'views',
+    templateDir: 'views',
 
-    masterDataDir: '/apps/MasterData',
-    masterDataTemplateDir: 'views',
+    adminDir: '/apps/Admin',
 
     // Methods
     applicationPath: function (view_name) {
@@ -26,15 +24,15 @@
         return this.assetsDir + '/' + file_path;
     },
 
-    masterDataTemplatePath: function (view_name) {
-        return this.masterDataDir + '/' + this.masterDataTemplateDir + '/' + view_name + '.html';
+    adminTemplatePath: function (view_name) {
+        return this.adminDir + '/' + this.templateDir + '/' + view_name + '.html';
     },
     
     journeyDesignerTemplatePath: function (view_name) {
-        return this.journeyDesignerDir + '/' + this.journeyDesignerTemplateDir + '/' + view_name + '.html';
+        return this.journeyDesignerDir + '/' + this.templateDir + '/' + view_name + '.html';
     },
 
     shellTemplatePath: function (view_name) {
-        return this.shellDir + '/' + this.shellTemplateDir + '/' + view_name + '.html';
+        return this.shellDir + '/' + this.templateDir + '/' + view_name + '.html';
     }
 };

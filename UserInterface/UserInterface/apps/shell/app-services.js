@@ -78,34 +78,32 @@ app.
 
         this.prepareSidebarMenu = function () {
             var landing = this.addItem("Home", "/app/dashboard-welcome", "linecons-desktop");
-            var product = this.addItem("Products", "/app/journeydesigner-products", "fa-globe");
-            var itineraries = this.addItem("Itineraries", "/app/itineraries-index", "fa-calendar");
-            var masterData = this.addItem("Master Data", "/app/masterdata", "fa-book");
+            var cashier = this.addItem("Cashier", "/app/cashier-index", "fa-globe");
+            var barista = this.addItem("Barista", "/app/barista-index", "fa-calendar");
+            var admin = this.addItem("Admin", "/app/admin", "fa-book");
         
-            // Subitems of Master Data
-            masterData.addItem("Brands", "-/brands"); // "-/" will append parents link
-            masterData.addItem("Operators", "-/operators"); // "-/" will append parents link
+            // Subitems of Admin
+            admin.addItem("Products", "-/products"); // "-/" will append parents link
 
             return this;
         };
 
         this.prepareHorizontalMenu = function () {
             var landing = this.addItem("Home", "/app/dashboard-welcome", "linecons-desktop");
-            var product = this.addItem("Products", "/app/journeydesigner", "fa-globe");
-            var itineraries = this.addItem("Itineraries", "/app/itineraries", "fa-calendar");
-            var masterData = this.addItem("Master Data", "/app/masterdata", "fa-book");
+            var cashier = this.addItem("Cashier", "/app/cashier", "fa-globe");
+            var barista = this.addItem("Barista", "/app/barista", "fa-calendar");
+            var admin = this.addItem("Admin", "/app/admin", "fa-book");
         
-            // Subitems of Products
-            product.addItem("Products", "-/index"); // "-/" will append parents link
-            product.addItem("Add Product", "-/new");
+            // Subitems of Cashier
+            product.addItem("Cashier", "-/index"); // "-/" will append parents link
+            product.addItem("Add Cashier", "-/new");
 
             // Subitems of Itineraries
-            itineraries.addItem("Itineraries", "-/index"); // "-/" will append parents link
-            itineraries.addItem("Add Itinerary", "-/new");
+            itineraries.addItem("Barista", "-/index"); // "-/" will append parents link
+            itineraries.addItem("Add Barista", "-/new");
 
             // Subitems of Master Data
-            masterData.addItem("Brands", "-/brands"); // "-/" will append parents link
-            masterData.addItem("Operators", "-/operators"); // "-/" will append parents link
+            admin.addItem("Products", "-/products"); // "-/" will append parents link
             
             return this;
         }

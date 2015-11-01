@@ -33,4 +33,4 @@
 
     module.directive("eventFocus", eventFocus);
 
-}(angular.module("journeyDesigner-app")))
+}(angular.module("microcafe-app")))

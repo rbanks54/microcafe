@@ -163,29 +163,13 @@
     <Content Include="apps\common\js\services\requestCounter.js" />
     <Content Include="apps\common\module.js" />
     <Content Include="apps\common\templates\alerts.html" />
-    <Content Include="apps\JourneyDesigner\controllers\itineraries.js" />
-    <Content Include="apps\JourneyDesigner\controllers\products.js" />
     <Content Include="apps\JourneyDesigner\directives\focusIf.js" />
     <Content Include="apps\JourneyDesigner\directives\focusElement.js" />
-    <Content Include="apps\JourneyDesigner\services\days.js" />
-    <Content Include="apps\JourneyDesigner\services\itineraries.js" />
-    <Content Include="apps\JourneyDesigner\services\products.js" />
-    <Content Include="apps\JourneyDesigner\views\itineraries\confirmItineraryDayAction.html" />
-    <Content Include="apps\JourneyDesigner\views\itineraries\confirmItineraryAction.html" />
-    <Content Include="apps\JourneyDesigner\views\itineraries\view.html" />
-    <Content Include="apps\JourneyDesigner\views\products\products.html" />
-    <Content Include="apps\JourneyDesigner\views\products\confirmProductDelete.html" />
-    <Content Include="apps\JourneyDesigner\views\products\edit-product.html" />
-    <Content Include="apps\MasterData\controllers\brands.js" />
-    <Content Include="apps\MasterData\controllers\operators.js" />
-    <Content Include="apps\MasterData\services\brands.js" />
-    <Content Include="apps\MasterData\services\operators.js" />
-    <Content Include="apps\MasterData\views\brands\brands.html" />
-    <Content Include="apps\MasterData\views\brands\confirmBrandDelete.html" />
-    <Content Include="apps\MasterData\views\brands\edit-brand.html" />
-    <Content Include="apps\MasterData\views\operators\confirmOperatorAction.html" />
-    <Content Include="apps\MasterData\views\operators\operators.html" />
-    <Content Include="apps\MasterData\views\operators\edit-operator.html" />
+    <Content Include="apps\Admin\controllers\products.js" />
+    <Content Include="apps\Admin\services\products.js" />
+    <Content Include="apps\Admin\views\products\products.html" />
+    <Content Include="apps\Admin\views\products\confirmProductDelete.html" />
+    <Content Include="apps\Admin\views\products\edit-product.html" />
     <Content Include="apps\shell\app-controllers.js" />
     <Content Include="apps\shell\app-directives.js" />
     <Content Include="apps\shell\app-factory.js" />
@@ -195,8 +179,6 @@
     <Content Include="apps\shell\services\alertingRunner.js" />
     <Content Include="apps\shell\services\stateChangeErrors.js" />
     <Content Include="apps\JourneyDesigner\views\dashboards\welcome.html" />
-    <Content Include="apps\JourneyDesigner\views\itineraries\edit-itinerary.html" />
-    <Content Include="apps\JourneyDesigner\views\itineraries\itineraries.html" />
     <Content Include="apps\shell\views\lockscreen.html" />
     <Content Include="apps\shell\views\login-light.html" />
     <Content Include="apps\shell\views\login.html" />
@@ -254,7 +236,6 @@
     <Content Include="Content\css\xenon-forms.css" />
     <Content Include="Content\css\xenon-skins.css" />
     <Content Include="Content\css\xenon.css" />
-    <Content Include="Content\images\Logos\wonder-mark.png" />
     <Content Include="Content\images\ok-white-full.png" />
     <Content Include="Content\images\ok-white.png" />
     <Content Include="Content\images\ok.png" />
@@ -1283,36 +1264,8 @@
   <ItemGroup>
     <Compile Include="App_Data\App_Start\RouteConfig.cs" />
     <Compile Include="App_Data\App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\JourneyDesigner\DaysController.cs" />
-    <Compile Include="Controllers\JourneyDesigner\ItinerariesController.cs" />
-    <Compile Include="Controllers\MasterData\BrandsController.cs" />
-    <Compile Include="Controllers\JourneyDesigner\ProductsController.cs" />
-    <Compile Include="Controllers\JourneyDesigner\ReferenceDataController.cs" />
-    <Compile Include="Controllers\MasterData\OperatorsController.cs" />
-    <Compile Include="Gateway\JourneryDesigner\CommandResponses\CostItems\ChangeCostItemResponse.cs" />
-    <Compile Include="Gateway\JourneryDesigner\CommandResponses\Days\AddCostItemToDayResponse.cs" />
-    <Compile Include="Gateway\JourneryDesigner\CommandResponses\Days\ChangeDayResponse.cs" />
-    <Compile Include="Gateway\JourneryDesigner\CommandResponses\Days\CreateDayResponse.cs" />
-    <Compile Include="Gateway\JourneryDesigner\CommandResponses\Days\DeleteDayResponse.cs" />
-    <Compile Include="Gateway\JourneryDesigner\CommandResponses\Days\RemoveCostItemFromDayResponse.cs" />
-    <Compile Include="Gateway\JourneryDesigner\CommandResponses\Days\ReorderCostItemsForDayResponse.cs" />
-    <Compile Include="Gateway\JourneryDesigner\CommandResponses\Itinerary\RemoveDayFromItineraryResponse.cs" />
-    <Compile Include="Gateway\JourneryDesigner\CommandResponses\Itinerary\ReorderDayForItineraryResponse.cs" />
-    <Compile Include="Gateway\JourneryDesigner\CommandResponses\Itinerary\AddDayToItineraryResponse.cs" />
-    <Compile Include="Gateway\JourneryDesigner\Commands\CostItems\ChangeCostItemCommand.cs" />
-    <Compile Include="Gateway\JourneryDesigner\Commands\Days\AddCostItemToDayCommand.cs" />
-    <Compile Include="Gateway\JourneryDesigner\Commands\Days\ChangeDayCommand.cs" />
-    <Compile Include="Gateway\JourneryDesigner\Commands\Days\CreateDayCommand.cs" />
-    <Compile Include="Gateway\JourneryDesigner\Commands\Days\DeleteDayCommand.cs" />
-    <Compile Include="Gateway\JourneryDesigner\Commands\Days\RemoveCostItemFromDayCommand.cs" />
-    <Compile Include="Gateway\JourneryDesigner\Commands\Days\ReorderCostItemsForDayCommand.cs" />
-    <Compile Include="Gateway\JourneryDesigner\Commands\Itinerary\RemoveDayFromItineraryCommand.cs" />
-    <Compile Include="Gateway\JourneryDesigner\Commands\Itinerary\AddDayItineraryCommand.cs" />
-    <Compile Include="Gateway\JourneryDesigner\Commands\Itinerary\ReorderDaysForItineraryCommand.cs" />
-    <Compile Include="Gateway\JourneryDesigner\Entities\CostItemDto.cs" />
-    <Compile Include="Gateway\JourneryDesigner\Services\ICostItemService.cs" />
-    <Compile Include="Gateway\JourneryDesigner\Services\IDayService.cs" />
-    <Compile Include="Gateway\JourneryDesigner\Services\DayService.cs" />
+    <Compile Include="Controllers\Admin\ProductsController.cs" />
+    <Compile Include="Controllers\Cashier\OrdersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1321,33 +1274,12 @@
     <Compile Include="Helpers\Configuration\AppConfiguration.cs" />
     <Compile Include="Helpers\Exceptions\CommandVersionException.cs" />
     <Compile Include="Helpers\Exceptions\DtoNotFoundException.cs" />
-    <Compile Include="Gateway\JourneryDesigner\Services\IReferenceDataService.cs" />
-    <Compile Include="Gateway\JourneryDesigner\Services\ItinerariesService.cs" />
-    <Compile Include="Gateway\JourneryDesigner\Services\IItinerariesService.cs" />
-    <Compile Include="Gateway\JourneryDesigner\Services\IProductsService.cs" />
+    <Compile Include="Gateway\Admin\Services\IProductsService.cs" />
     <Compile Include="Gateway\Cashier\Services\BrandService.cs" />
-    <Compile Include="Gateway\Cashier\Services\OperatorService.cs" />
-    <Compile Include="Gateway\Cashier\Services\IOperatorService.cs" />
-    <Compile Include="Gateway\Cashier\Services\Dummies\BrandService_Dummy.cs" />
     <Compile Include="Gateway\Cashier\Services\IBrandService.cs" />
-    <Compile Include="Gateway\JourneryDesigner\Services\ProductsService.cs" />
-    <Compile Include="Gateway\JourneryDesigner\Services\ReferenceDataService.cs" />
-    <Compile Include="Gateway\JourneryDesigner\CommandResponses\Itinerary\DeleteItineraryResponse.cs" />
-    <Compile Include="Gateway\JourneryDesigner\CommandResponses\Itinerary\ChangeItineraryResponse.cs" />
-    <Compile Include="Gateway\JourneryDesigner\CommandResponses\Itinerary\CreateItineraryResponse.cs" />
-    <Compile Include="Gateway\JourneryDesigner\CommandResponses\Products\RenameProductResponse.cs" />
-    <Compile Include="Gateway\JourneryDesigner\CommandResponses\Products\CreateProductResponse.cs" />
-    <Compile Include="Gateway\JourneryDesigner\Commands\Itinerary\DeleteItineraryCommand.cs" />
-    <Compile Include="Gateway\JourneryDesigner\Commands\Itinerary\ChangeItineraryCommand.cs" />
-    <Compile Include="Gateway\JourneryDesigner\Commands\Itinerary\CreateItineraryCommand.cs" />
-    <Compile Include="Gateway\JourneryDesigner\Commands\Products\CreateProductCommand.cs" />
-    <Compile Include="Gateway\JourneryDesigner\Commands\Products\AlterProductCommand.cs" />
-    <Compile Include="Gateway\JourneryDesigner\Entities\BrandDto.cs" />
-    <Compile Include="Gateway\JourneryDesigner\Entities\ItinerariesRefData.cs" />
-    <Compile Include="Gateway\JourneryDesigner\Entities\ItineraryEditRefData.cs" />
-    <Compile Include="Gateway\JourneryDesigner\Entities\ItineraryDto.cs" />
-    <Compile Include="Gateway\JourneryDesigner\Entities\DayDto.cs" />
-    <Compile Include="Gateway\JourneryDesigner\Entities\DayItineraryDto.cs" />
+    <Compile Include="Gateway\Admin\Services\ProductsService.cs" />
+    <Compile Include="Gateway\Admin\CommandResponses\Products\CreateProductResponse.cs" />
+    <Compile Include="Gateway\Admin\Commands\Products\ProductCommands.cs" />
     <Compile Include="Gateway\Cashier\CommandResponses\AlterOperatorResponse.cs" />
     <Compile Include="Gateway\Cashier\CommandResponses\ArchiveOperatorResponse.cs" />
     <Compile Include="Gateway\Cashier\CommandResponses\DeleteOperatorResponse.cs" />
@@ -1361,10 +1293,7 @@
     <Compile Include="Gateway\Cashier\Commands\CreateBrandCommand.cs" />
     <Compile Include="Gateway\Cashier\Commands\AlterBrandCommand.cs" />
     <Compile Include="Gateway\Cashier\Entities\BrandDto.cs" />
-    <Compile Include="Gateway\JourneryDesigner\Entities\SeasonDto.cs" />
-    <Compile Include="Gateway\JourneryDesigner\Entities\OwnerDto.cs" />
-    <Compile Include="Gateway\JourneryDesigner\Entities\OperatorDto.cs" />
-    <Compile Include="Gateway\JourneryDesigner\Entities\ProductDto.cs" />
+    <Compile Include="Gateway\Admin\Entities\ProductDto.cs" />
     <Compile Include="Gateway\Cashier\Entities\OperatorDto.cs" />
     <Compile Include="Helpers\Extensions\ApiControllerHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -1394,9 +1323,12 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="apps\Admin\directives\" />
+    <Folder Include="apps\JourneyDesigner\controllers\" />
     <Folder Include="apps\JourneyDesigner\filters\" />
-    <Folder Include="apps\MasterData\directives\" />
+    <Folder Include="apps\JourneyDesigner\services\" />
     <Folder Include="Content\images\backgrounds\" />
+    <Folder Include="Content\images\Logos\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

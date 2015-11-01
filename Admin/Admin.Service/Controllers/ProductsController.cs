@@ -6,6 +6,7 @@ using Admin.Service.DataTransferObjects.Commands;
 using Admin.Service.MicroServices.Products.Commands;
 using Admin.Service.MicroServices.Products.Handlers;
 using MicroServices.Common.Exceptions;
+using System.Web.Http.Results;
 
 namespace Admin.Service.Controllers
 {
@@ -21,12 +22,10 @@ namespace Admin.Service.Controllers
         {
             this.handler = handler;
         }
-
-
+        
         [HttpPost]
         public IHttpActionResult Post(CreateProductCommand cmd)
         {
-            // TODO: is this to be handled here or in the Aggregate?
             if (string.IsNullOrWhiteSpace(cmd.Name))
             {
                 var response = new HttpResponseMessage(HttpStatusCode.Forbidden)

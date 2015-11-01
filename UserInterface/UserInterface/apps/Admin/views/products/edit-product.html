@@ -1,0 +1,62 @@
+﻿<style type="text/css">
+    
+</style>
+
+<page-title ng-if="layoutOptions.pageTitles" title="{{title}}" description="Adjust the properties of the product."></page-title>
+
+
+<div class="row">
+    <div class="col-md-12">
+
+        <!-- Default panel -->
+        <div class="panel panel-default">
+            <div class="panel-heading" ng-show="false">
+                <span ng-show="formMode==='Edit'"><i class="glyphicon glyphicon-edit"></i> Currently Editing Product: '{{product.name}}' v{{ product.version }}</span>
+                <span ng-show="formMode==='Add'"><i class="glyphicon glyphicon-edit"></i> Currently adding a new Product: </span>
+            </div>
+
+            <div class="panel-body">
+                <form role="form" name="myForm" class="form-horizontal">
+                    <div class="row">
+                        <div class="form-group" ng-class="{error: myForm.name.$invalid}">
+                            <label class="col-md-2"> Name *</label>
+                            <div class="col-md-4">
+                                <input name="code" ng-model="product.name" type="text" class="form-control" placeholder="Product name" capitalize required/>
+                            </div>
+                            <div class="col-md-4 help-container">
+                                <span ng-show="myForm.code.$dirty && !myForm.code.$invalid" class="help-inline help-ok"><i class="glyphicon glyphicon-ok"></i> Code looks good</span>
+                                <span ng-show="myForm.code.$dirty && myForm.code.$invalid" class="help-inline help-broken"><i class="glyphicon glyphicon-remove"></i> Code required</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2"> Description </label>
+                            <div class="col-md-4">
+                                <input name="_name" ng-model="product.description" type="text" class="form-control" placeholder="Enter description"/>
+                            </div>
+                            <div class="col-md-4 help-container">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-2"></label>
+                            <div class="col-md-4">
+                                <a href="#/app/admin-products" class="btn btn-white">Cancel</a>
+                                <button ng-click="saveProduct(brand);"
+                                        ng-disabled="isClean() || myForm.$invalid"
+                                        class="btn btn-primary">
+                                    {{buttonText}}
+                                </button>
+                                <button ng-click="confirmDeleteProduct(brand)"
+                                        ng-show="title==='Edit Product'" class="btn btn-warning">
+                                    Delete
+                                </button>
+                            </div>
+                            <div class="col-md-4 help-container">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

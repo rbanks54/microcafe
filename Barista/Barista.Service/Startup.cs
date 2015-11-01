@@ -46,7 +46,7 @@ namespace Barista.Service
             ServiceLocator.Bus = bus;
 
             //Should get this from a config setting instead of hardcoding it.
-            var eventStoreConnection = EventStoreConnection.Create(new IPEndPoint(IPAddress.Loopback, 3300));
+            var eventStoreConnection = EventStoreConnection.Create(new IPEndPoint(IPAddress.Loopback, 12900));
             eventStoreConnection.ConnectAsync().Wait();
             var repository = new EventStoreRepository(eventStoreConnection, bus);
             

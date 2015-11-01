@@ -7,4 +7,4 @@
         });
     });
 
-}(angular.module("journeyDesigner-app")));
+}(angular.module("microcafe-app")));
