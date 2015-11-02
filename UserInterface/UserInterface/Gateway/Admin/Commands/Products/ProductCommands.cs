@@ -11,14 +11,14 @@ namespace UserInterface.Gateway.Admin.Commands.Products
     {
         public string Name { get; set; }
         public string Description { get; set; }
-        public ProductType ProductType { get; set; }
+        public decimal Price { get; set; }
     }
 
     public class AlterProductCommand
     {
         public string Name { get; set; }
         public string Description { get; set; }
-        public ProductType ProductType { get; set; }
+        public decimal Price { get; set; }
         public int Version { get; set; }
     }
 }

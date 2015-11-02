@@ -11,20 +11,9 @@ namespace UserInterface.Models.Entities
         public string Code { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public ProductType ProductType { get; set; }
+        public decimal Price { get; set; }
         public int Version { get; set; }
 
         public string DisplayName { get; set; }
-        public string ProductTypeDisplayName { get; set; }
-    }
-
-    public enum ProductType
-    {
-        [Display(Name = "River Cruise")]
-        RiverCruise = 1,
-        [Display(Name = "Land Tour")]
-        LandTour = 2,
-        [Display(Name = "Ocean Cruise")]
-        OceanCruise
     }
 }

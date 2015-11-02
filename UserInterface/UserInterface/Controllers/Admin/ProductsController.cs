@@ -31,7 +31,7 @@ namespace UserInterface.Controllers
             return response;
         }
 
-        [Route("api/admin/product/{id:guid}")]
+        [Route("api/admin/product/{id:guid}",Name ="GetProductById")]
         public async Task<IHttpActionResult> Get(Guid id)
         {
             var result = await productsService.GetProductAsync(id);
@@ -48,7 +48,7 @@ namespace UserInterface.Controllers
         {
             var result = await productsService.CreateProductAsync(cmd);
 
-            return CreatedAtRoute("GetBrandById", new { id = result.Id }, result);
+            return CreatedAtRoute("GetProductById", new { id = result.Id }, result);
         }
 
         [Route("api/admin/product/{id:guid}")]

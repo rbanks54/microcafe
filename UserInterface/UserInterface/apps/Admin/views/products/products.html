@@ -40,17 +40,20 @@
                             <span ng-show="sortType == 'name' && !sortReverse" class="fa fa-caret-down"></span>
                             <span ng-show="sortType == 'name' && sortReverse" class="fa fa-caret-up"></span>
                         </th>
-                        <th ng-click="sortType = 'description'; sortReverse = !sortReverse"> 
+                        <th ng-click="sortType = 'description'; sortReverse = !sortReverse">
                             Description
                             <span ng-show="sortType == 'description' && !sortReverse" class="fa fa-caret-down"></span>
                             <span ng-show="sortType == 'description' && sortReverse" class="fa fa-caret-up"></span>
+                        </th>
+                        <th>Price</th>
                         <th>Action&nbsp;</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr ng-repeat="product in products| orderBy:sortType:sortReverse">
-                        <td class="col-md-2">{{product.name}}</td>
+                        <td class="col-md-1">{{product.name}}</td>
                         <td class="col-md-2">{{product.description}}</td>
+                        <td class="col-md-1">{{product.price}}</td>
                         <td class="col-md-2"><a href="#/app/admin-products-edit/{{product.id}}" class="btn" class="btn">&nbsp;<i class="glyphicon glyphicon-edit"></i>&nbsp; Edit Product</a></td>
                     </tr>
                 </tbody>

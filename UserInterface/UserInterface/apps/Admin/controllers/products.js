@@ -71,11 +71,8 @@
 
                         var uiMessage = "Failed to add new Product.";
                         if (response.data.exceptionMessage !== undefined) {
-
                             var json = response.data.exceptionMessage;
-
                             var expectionMessageJSON = JSON.parse(json);
-
                             uiMessage = uiMessage + "<p>" + expectionMessageJSON.Data.Message + "</p>";
                         }
 
