@@ -31,6 +31,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroServices.Common", "..\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroServices.Common.General", "..\MicroService-Common\MicroServices.Common.General\MicroServices.Common.General.csproj", "{FC24D38F-FB96-43E1-B21E-B6E1BFA1DC11}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Admin.ReadModels.Client", "..\Admin\Admin.ReadModels.Client\Admin.ReadModels.Client.csproj", "{C46D3E71-E08D-4F45-B54B-03E3759028E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Admin.Common", "..\Admin\Admin.Common\Admin.Common.csproj", "{5E571774-1D77-4F79-AF04-27A85DAC1340}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +61,14 @@ Global
 		{FC24D38F-FB96-43E1-B21E-B6E1BFA1DC11}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FC24D38F-FB96-43E1-B21E-B6E1BFA1DC11}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FC24D38F-FB96-43E1-B21E-B6E1BFA1DC11}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C46D3E71-E08D-4F45-B54B-03E3759028E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C46D3E71-E08D-4F45-B54B-03E3759028E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C46D3E71-E08D-4F45-B54B-03E3759028E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C46D3E71-E08D-4F45-B54B-03E3759028E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E571774-1D77-4F79-AF04-27A85DAC1340}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E571774-1D77-4F79-AF04-27A85DAC1340}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E571774-1D77-4F79-AF04-27A85DAC1340}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E571774-1D77-4F79-AF04-27A85DAC1340}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

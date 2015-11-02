@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Web.Http;
-using Admin.Common.Dto;
 using MicroServices.Common.Exceptions;
 
 namespace Admin.ReadModels.Service.Controllers
@@ -29,16 +27,6 @@ namespace Admin.ReadModels.Service.Controllers
             var view = ServiceLocator.ProductView;
             var result = view.GetAll();
             return Ok(result);
-        }
-
-        [HttpGet]
-        [Route("api/products/exists/{name}")]
-        public IHttpActionResult Exists(string name)
-        {
-            var view = ServiceLocator.ProductView;
-            //TODO: Fix this
-            //return Ok(view.CodeExists(name));
-            return Ok(true);
         }
     }
 }

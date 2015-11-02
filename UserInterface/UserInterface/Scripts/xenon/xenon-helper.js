@@ -2,14 +2,15 @@
     // Vars (paths without trailing slash)
     templatesDir: 'views',
     assetsDir: '/content',
-    appDir: '/apps/JourneyDesigner',
+    appDir: '/apps/cashier',
     
     shellDir: '/apps/shell',
 
-    journeyDesignerDir: '/apps/JourneyDesigner',
+    cashierDir: '/apps/cashier',
+    baristaDir: '/apps/barista',
     templateDir: 'views',
 
-    adminDir: '/apps/Admin',
+    adminDir: '/apps/admin',
 
     // Methods
     applicationPath: function (view_name) {
@@ -28,8 +29,12 @@
         return this.adminDir + '/' + this.templateDir + '/' + view_name + '.html';
     },
     
-    journeyDesignerTemplatePath: function (view_name) {
-        return this.journeyDesignerDir + '/' + this.templateDir + '/' + view_name + '.html';
+    cashierTemplatePath: function (view_name) {
+        return this.cashierDir + '/' + this.templateDir + '/' + view_name + '.html';
+    },
+
+    baristaTemplatePath: function (view_name) {
+        return this.basristaDir + '/' + this.templateDir + '/' + view_name + '.html';
     },
 
     shellTemplatePath: function (view_name) {

@@ -41,7 +41,7 @@ namespace Cashier.ReadModels.Service
             // ------------------------------------------------------------------------------------
             //var appConfig = AppConfiguration.Config;
             var redis = ConnectionMultiplexer.Connect("localhost");
-            var brandView = new BrandView(new RedisReadModelRepository<BrandDto>(redis.GetDatabase()));
+            var brandView = new OrderView(new RedisReadModelRepository<OrderDto>(redis.GetDatabase()));
             ServiceLocator.BrandView = brandView;
 
             var eventMappings = new EventHandlerDiscovery()

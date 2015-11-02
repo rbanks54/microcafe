@@ -100,9 +100,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Config\AppConfiguration.cs" />
-    <Compile Include="Controllers\BrandsController.cs" />
-    <Compile Include="DataTransferObjects\Commands\AlterBrandCommand.cs" />
-    <Compile Include="DataTransferObjects\Commands\CreateBrandCommand.cs" />
+    <Compile Include="Controllers\OrdersController.cs" />
+    <Compile Include="DataTransferObjects\Commands\OrderCommands.cs" />
     <Compile Include="Helpers\ApiControllerHelper.cs" />
     <Compile Include="MicroServices\Order\Commands\OrderCommands.cs" />
     <Compile Include="MicroServices\Order\Domain\Order.cs" />

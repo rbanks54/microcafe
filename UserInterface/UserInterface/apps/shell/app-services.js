@@ -77,8 +77,7 @@ app.
         };
 
         this.prepareSidebarMenu = function () {
-            var landing = this.addItem("Home", "/app/dashboard-welcome", "linecons-desktop");
-            var cashier = this.addItem("Cashier", "/app/cashier-index", "fa-globe");
+            var landing = this.addItem("Home", "/app/cashier-order", "linecons-desktop");
             var barista = this.addItem("Barista", "/app/barista-index", "fa-calendar");
             var admin = this.addItem("Admin", "/app/admin", "fa-book");
         
@@ -89,19 +88,10 @@ app.
         };
 
         this.prepareHorizontalMenu = function () {
-            var landing = this.addItem("Home", "/app/dashboard-welcome", "linecons-desktop");
-            var cashier = this.addItem("Cashier", "/app/cashier", "fa-globe");
+            var landing = this.addItem("Home", "/app/cashier-order", "linecons-desktop");
             var barista = this.addItem("Barista", "/app/barista", "fa-calendar");
             var admin = this.addItem("Admin", "/app/admin", "fa-book");
         
-            // Subitems of Cashier
-            product.addItem("Cashier", "-/index"); // "-/" will append parents link
-            product.addItem("Add Cashier", "-/new");
-
-            // Subitems of Itineraries
-            itineraries.addItem("Barista", "-/index"); // "-/" will append parents link
-            itineraries.addItem("Add Barista", "-/new");
-
             // Subitems of Master Data
             admin.addItem("Products", "-/products"); // "-/" will append parents link
             

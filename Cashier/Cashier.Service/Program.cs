@@ -11,9 +11,9 @@ namespace Cashier.Service
         {
             HostFactory.Run(x =>
             {
-                x.Service<MasterDataService>(s =>
+                x.Service<CashierService>(s =>
                 {
-                    s.ConstructUsing(name => new MasterDataService());
+                    s.ConstructUsing(name => new CashierService());
                     s.WhenStarted(tc => tc.Start());
                     s.WhenStopped(tc => tc.Stop());
                 });
@@ -26,7 +26,7 @@ namespace Cashier.Service
         }
     }
 
-    public class MasterDataService
+    public class CashierService
     {
         private IDisposable webApp;
 

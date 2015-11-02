@@ -11,9 +11,9 @@ namespace Cashier.ReadModels.Service
         {
             HostFactory.Run(x =>
             {
-                x.Service<MasterDataReadModelsService>(s =>
+                x.Service<CashierReadModelsService>(s =>
                 {
-                    s.ConstructUsing(name => new MasterDataReadModelsService());
+                    s.ConstructUsing(name => new CashierReadModelsService());
                     s.WhenStarted(tc => tc.Start());
                     s.WhenStopped(tc => tc.Stop());
                 });
@@ -26,20 +26,12 @@ namespace Cashier.ReadModels.Service
         }
     }
 
-    public class MasterDataReadModelsService
+    public class CashierReadModelsService
     {
         private IDisposable webApp;
 
         public void Start()
         {
-            // ------------------------------------------------------------------------------------
-            // SJC : this is using the app.config to indicate settings
-            //       BUT
-            //       this maybe a problem for the octopus deploy mechanism.
-            // ------------------------------------------------------------------------------------
-            //var config = AppConfiguration.Config;
-            //var baseUri = config.ServiceUri;
-            
             var baseUri = "http://localhost:8182";
 
             Console.WriteLine("Starting Cashier Read Model Service...");

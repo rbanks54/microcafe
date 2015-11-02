@@ -7,6 +7,6 @@ namespace Cashier.ReadModels.Service
     public static class ServiceLocator
     {
         public static IMessageBus Bus { get; set; }
-        public static BrandView BrandView { get; set; }
+        public static OrderView BrandView { get; set; }
     }
 }

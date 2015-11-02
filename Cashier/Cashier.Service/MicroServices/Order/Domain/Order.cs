@@ -11,65 +11,37 @@ namespace Cashier.Service.MicroServices.Brand.Domain
         {
         }
 
-        public Order(Guid id, string code, string name)
+        public Order(Guid id, Guid productId, int quantity)
         {
-            // Business Logic Validation
-            ValidateCode(code);
+            if (quantity <= 0) throw new ArgumentOutOfRangeException("quantity", "quantity must be a number from 1 and up");
+            if (Guid.Empty.Equals(productId)) throw new ArgumentNullException("productId", "A valid Product Guid must be provided");
 
-            ApplyEvent(new BrandCreated(id, code, name));
+            ApplyEvent(new OrderPlaced(id, productId, quantity));
         }
 
-        public string Code { get; private set; }
-        public string Name { get; private set; }
+        public Guid ProductId { get; private set; }
+        public int Quantity { get; private set; }
+        public bool HasBeenPaid { get; private set; }
 
-        private void Apply(BrandCreated e)
+        private void Apply(OrderPlaced e)
         {
             Id = e.Id;
-            Code = e.Code;
+            ProductId = e.ProductId;
+            Quantity = e.Quantity;
+            HasBeenPaid = false;
         }
 
-        private void Apply(BrandCodeChanged e)
+        private void Apply(OrderPaidFor e)
         {
-            Code = e.NewCode;
+            HasBeenPaid = true;
         }
 
-        private void Apply(BrandNameChanged e)
+        public void PayForOrder(int originalVersion)
         {
-            Name = e.NewName;
-        }
-
-        public void ChangeCode(string newCode, int originalVersion)
-        {
-            // Business Logic Validation
-            ValidateCode(newCode);
-
-            //can only rename the current version of the aggregate
+            //can only update the current version of an aggregate
             ValidateVersion(originalVersion);
 
-            // Raise a series here?
-            ApplyEvent(new BrandCodeChanged(Id, newCode));
-        }
-
-        public void ChangeName(string newName, int originalVersion)
-        {
-            //can only rename the current version of the aggregate
-            ValidateVersion(originalVersion);
-
-            // Raise a series here?
-            ApplyEvent(new BrandNameChanged(Id, newName));
-        }
-
-        private void ValidateCode(string code)
-        {
-            if (string.IsNullOrWhiteSpace(code))
-            {
-                throw new ArgumentException("Invalid code specified: cannot be empty.", "code");
-            }
-
-            if (code.Any(char.IsLower))
-            {
-                throw new ArgumentException("Invalid code specified: cannot contain lowercase letters.", "code");
-            }
+            ApplyEvent(new OrderPaidFor(Id));
         }
 
         private void ValidateVersion(int version)

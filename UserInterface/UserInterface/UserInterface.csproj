@@ -147,6 +147,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="apps\Cashier\controllers\orders.js" />
+    <Content Include="apps\Cashier\services\orders.js" />
     <Content Include="apps\common\js\directives\alerts.js" />
     <Content Include="apps\common\js\directives\captialize.js" />
     <Content Include="apps\common\js\directives\workSpinner.js" />
@@ -163,8 +165,8 @@
     <Content Include="apps\common\js\services\requestCounter.js" />
     <Content Include="apps\common\module.js" />
     <Content Include="apps\common\templates\alerts.html" />
-    <Content Include="apps\JourneyDesigner\directives\focusIf.js" />
-    <Content Include="apps\JourneyDesigner\directives\focusElement.js" />
+    <Content Include="apps\Cashier\directives\focusIf.js" />
+    <Content Include="apps\Cashier\directives\focusElement.js" />
     <Content Include="apps\Admin\controllers\products.js" />
     <Content Include="apps\Admin\services\products.js" />
     <Content Include="apps\Admin\views\products\products.html" />
@@ -178,7 +180,7 @@
     <Content Include="apps\shell\app-services.js" />
     <Content Include="apps\shell\services\alertingRunner.js" />
     <Content Include="apps\shell\services\stateChangeErrors.js" />
-    <Content Include="apps\JourneyDesigner\views\dashboards\welcome.html" />
+    <Content Include="apps\Cashier\views\order.html" />
     <Content Include="apps\shell\views\lockscreen.html" />
     <Content Include="apps\shell\views\login-light.html" />
     <Content Include="apps\shell\views\login.html" />
@@ -1324,9 +1326,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="apps\Admin\directives\" />
-    <Folder Include="apps\JourneyDesigner\controllers\" />
-    <Folder Include="apps\JourneyDesigner\filters\" />
-    <Folder Include="apps\JourneyDesigner\services\" />
+    <Folder Include="apps\Cashier\filters\" />
     <Folder Include="Content\images\backgrounds\" />
     <Folder Include="Content\images\Logos\" />
   </ItemGroup>

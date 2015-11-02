@@ -41,7 +41,6 @@ namespace Admin.ReadModels.Service
 
         private void ConfigureHandlers()
         {
-            //Should get this from a config setting instead of hardcoding it.
             var redis = ConnectionMultiplexer.Connect("localhost");
             var productView = new ProductView(new RedisReadModelRepository<ProductDto>(redis.GetDatabase()));
             ServiceLocator.ProductView = productView;

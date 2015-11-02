@@ -50,8 +50,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Dto\BrandDto.cs" />
-    <Compile Include="Events\BrandEvents.cs" />
+    <Compile Include="Dto\OrderDto.cs" />
+    <Compile Include="Events\OrderEvents.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

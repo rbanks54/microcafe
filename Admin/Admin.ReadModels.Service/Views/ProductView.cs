@@ -16,6 +16,7 @@ namespace Admin.ReadModels.Service.Views
         IHandle<ProductNameChanged>,
         IHandle<ProductPriceChanged>
     {
+        private const string displayFormat = "{1} ({0})";
         private readonly IReadModelRepository<ProductDto> repository;
 
         public ProductView(IReadModelRepository<ProductDto> repository)
@@ -48,7 +49,8 @@ namespace Admin.ReadModels.Service.Views
                 Name = e.Name,
                 Description = e.Description,
                 Price = e.Price,
-                Version = e.Version
+                Version = e.Version,
+                DisplayName = string.Format(displayFormat, e.Name, e.Description),
             };
             repository.Insert(dto);
         }
@@ -57,6 +59,7 @@ namespace Admin.ReadModels.Service.Views
             var product = GetById(e.Id);
             product.Name = e.NewName;
             product.Version = e.Version;
+            product.DisplayName = string.Format(displayFormat, product.Name, product.Description);
             repository.Update(product);
         }
         public void Apply(ProductDescriptionChanged e)
@@ -64,6 +67,7 @@ namespace Admin.ReadModels.Service.Views
             var product = GetById(e.Id);
             product.Description = e.NewDescription;
             product.Version = e.Version;
+            product.DisplayName = string.Format(displayFormat, product.Name, product.Description);
             repository.Update(product);
         }
         public void Apply(ProductPriceChanged e)

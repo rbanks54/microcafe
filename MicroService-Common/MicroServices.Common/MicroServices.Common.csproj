@@ -67,6 +67,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MessageBus\TransientSubscriber.cs" />
     <Compile Include="MessageBus\RabbitMqBus.cs" />
     <Compile Include="Repository\EventStoreRepository.cs" />
     <Compile Include="MessageBus\IMessageBus.cs" />

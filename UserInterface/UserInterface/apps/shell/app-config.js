@@ -1,7 +1,7 @@
 ﻿
 app.config(function ($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, ASSETS) {
 
-    $urlRouterProvider.otherwise("/app/dashboard-welcome");
+    $urlRouterProvider.otherwise("/app/cashier-order");
 
     $stateProvider.
         // Main Layout Structure
@@ -25,39 +25,12 @@ app.config(function ($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, AS
         }).
 
         // Dashboards
-        state("app.dashboard-welcome", {
-            url: "/dashboard-welcome",
-            templateUrl: appHelper.journeyDesignerTemplatePath("dashboards/welcome"),
+        state("app.cashier-order", {
+            url: "/cashier-order",
+            templateUrl: appHelper.cashierTemplatePath("order"),
             resolve: {
             }
         }).
-
-        //// Products
-        //// master data - brands
-        //state("app.journeydesigner-products", {
-        //    url: "/journeydesigner-products",
-        //    templateUrl: appHelper.journeyDesignerTemplatePath("products/products"),
-        //    controller: "productListCtrl",
-        //    resolve: {
-        //    }
-        //}).
-
-        //// master data - brands - Editor
-        //state("app.journeydesigner-products-edit", {
-        //    url: "/journeydesigner-products-edit/:productId",
-        //    templateUrl: appHelper.journeyDesignerTemplatePath("products/edit-product"),
-        //    controller: "productEditCtrl",
-        //    resolve: {
-        //        product: function (productService, $stateParams) {
-        //            var productId = $stateParams.productId;
-        //            if (productId !== "0") {
-        //                return productService.getProduct(productId);
-        //            } else {
-        //                return productService.newProduct();
-        //            }
-        //        }
-        //    }
-        //}).
 
         // admin - products
         state("app.admin-products", {

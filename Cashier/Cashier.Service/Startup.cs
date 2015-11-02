@@ -35,13 +35,13 @@ namespace Cashier.Service
             var bus = new RabbitMqBus(RabbitHutch.CreateBus("host=localhost"));
             ServiceLocator.Bus = bus;
 
-            var eventStorePort = 12900;
+            var eventStorePort = 12800;
 
             var eventStoreConnection = EventStoreConnection.Create(new IPEndPoint(IPAddress.Loopback, eventStorePort));
             eventStoreConnection.ConnectAsync().Wait();
             var repository = new EventStoreRepository(eventStoreConnection, bus);
 
-            ServiceLocator.BrandCommands = new OrderCommandHandlers(repository);
+            ServiceLocator.OrderCommands = new OrderCommandHandlers(repository);
         }
     }
 }

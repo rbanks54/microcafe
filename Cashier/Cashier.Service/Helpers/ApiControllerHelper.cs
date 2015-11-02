@@ -37,7 +37,7 @@ namespace Cashier.Service.Controllers
                 value = value.Substring(0, value.Length - 1);
             }
 
-            return Int32.TryParse(value, out version);
+            return int.TryParse(value, out version);
         }
     }
 }
