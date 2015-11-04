@@ -37,6 +37,9 @@ bld/
 [Oo]bj/
 .vs/
 
+.sonarqube/
+sonarqube.analysis.xml
+
 *.userosscache
 *.sln.docstates
 
