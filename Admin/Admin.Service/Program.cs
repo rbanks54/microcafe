@@ -10,9 +10,9 @@ namespace Admin.Service
         { 
             HostFactory.Run(x => 
             {
-                x.Service<JourneyDesignerService>(s => 
+                x.Service<AdminService>(s => 
                 {
-                    s.ConstructUsing(name => new JourneyDesignerService());
+                    s.ConstructUsing(name => new AdminService());
                     s.WhenStarted(tc => tc.Start());
                     s.WhenStopped(tc => tc.Stop());
                 });
@@ -25,7 +25,7 @@ namespace Admin.Service
         }
     }
 
-    public class JourneyDesignerService
+    public class AdminService
     {
         private IDisposable webApp;
         public void Start()

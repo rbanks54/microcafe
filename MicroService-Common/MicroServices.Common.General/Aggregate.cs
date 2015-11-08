@@ -9,7 +9,6 @@ namespace MicroServices.Common
 
         public Guid Id { get; protected set; }
 
-        //done this way for VS2012 support, and to avoid subclasses needing to call the base constructor
         private int version = -1;
         public int Version { get { return version; } internal set { version = value; } }
 
