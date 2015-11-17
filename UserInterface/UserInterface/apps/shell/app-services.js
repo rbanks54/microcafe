@@ -1,6 +1,5 @@
 ﻿"use strict";
 
-//angular.module('journeyDesigner.services', []).
 app.
     service("$menuItems", function () {
         this.menuItems = [];

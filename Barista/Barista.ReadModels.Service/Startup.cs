@@ -81,8 +81,6 @@ namespace Barista.ReadModels.Service
 
         private void ConfigureExternalData()
         {
-            IBaristaClient masterDataClient = new BaristaClient();
-            masterDataClient.Initialise();
         }
     }
 }

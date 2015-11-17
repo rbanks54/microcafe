@@ -1,6 +1,5 @@
 ﻿"use strict";
 
-//angular.module('journeyDesigner.controllers', []).
 app.
     controller("LoginCtrl", function ($scope, $rootScope, oauth, currentUser, alerting, loginRedirect) {
         //----------------------------------------------------------

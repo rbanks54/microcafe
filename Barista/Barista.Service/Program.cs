@@ -30,7 +30,7 @@ namespace Barista.Service
         private IDisposable webApp;
         public void Start()
         {
-            const string baseUri = "http://localhost:8180";
+            const string baseUri = "http://localhost:8184";
             Console.WriteLine("Starting web Server...");
             webApp = WebApp.Start<Startup>(baseUri);
             Console.WriteLine("Server running at {0} - press Enter to quit. ", baseUri);

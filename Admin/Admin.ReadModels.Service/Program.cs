@@ -10,9 +10,9 @@ namespace Admin.ReadModels.Service
         {
             HostFactory.Run(x =>
             {
-                x.Service<JourneyDesignerService>(s =>
+                x.Service<AdminReadModelService>(s =>
                 {
-                    s.ConstructUsing(name => new JourneyDesignerService());
+                    s.ConstructUsing(name => new AdminReadModelService());
                     s.WhenStarted(tc => tc.Start());
                     s.WhenStopped(tc => tc.Stop());
                 });
@@ -24,7 +24,7 @@ namespace Admin.ReadModels.Service
             });
         }
     }
-    public class JourneyDesignerService
+    public class AdminReadModelService
     {
         private IDisposable webApp;
         public void Start()

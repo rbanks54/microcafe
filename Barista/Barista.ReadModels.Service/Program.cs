@@ -29,7 +29,7 @@ namespace Barista.ReadModels.Service
         private IDisposable webApp;
         public void Start()
         {
-            const string baseUri = "http://localhost:8181";
+            const string baseUri = "http://localhost:8185";
             Console.WriteLine("Starting Barista Read Model Service...");
             webApp = WebApp.Start<Startup>(baseUri);
             Console.WriteLine("Server running at {0} - press Enter to quit. ", baseUri);

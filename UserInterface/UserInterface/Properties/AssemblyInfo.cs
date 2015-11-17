@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("UserInterface")]
-[assembly: AssemblyDescription("This is the Api Gateway and User Interface for Journey Designer")]
+[assembly: AssemblyDescription("This is the Api Gateway and User Interface for the Micro Cafe")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Scenic Tours")]
+[assembly: AssemblyCompany("MicroCafe Energy Systems")]
 [assembly: AssemblyProduct("UserInterface")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]

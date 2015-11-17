@@ -7,8 +7,8 @@
     <ProjectGuid>{D91AEECC-CA6A-48A2-90D6-5146D945DEAB}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Barista.ReadModels.Service</RootNamespace>
-    <AssemblyName>Barista.ReadModels.Service</AssemblyName>
+    <RootNamespace>Admin.ReadModels.Service</RootNamespace>
+    <AssemblyName>Admin.ReadModels.Service</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

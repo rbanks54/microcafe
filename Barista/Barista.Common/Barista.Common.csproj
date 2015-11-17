@@ -50,22 +50,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Clients\IBaristaClient.cs" />
-    <Compile Include="Clients\BaristaClient.cs" />
-    <Compile Include="Dto\CostItemDto.cs" />
-    <Compile Include="Dto\DayDto.cs" />
-    <Compile Include="Dto\SeasonDto.cs" />
-    <Compile Include="Dto\OwnerDto.cs" />
-    <Compile Include="Dto\ItineraryDto.cs" />
-    <Compile Include="Dto\BrandDto.cs" />
-    <Compile Include="Dto\OperatorDto.cs" />
-    <Compile Include="Dto\ProductDto.cs" />
-    <Compile Include="Enums\ItineraryStatus.cs" />
-    <Compile Include="Enums\ProductType.cs" />
-    <Compile Include="Events\CostItemEvents.cs" />
-    <Compile Include="Events\ItineraryEvents.cs" />
-    <Compile Include="Events\DayEvents.cs" />
-    <Compile Include="Events\ProductEvents.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -76,6 +60,12 @@
       <Project>{fc24d38f-fb96-43e1-b21e-b6e1bfa1dc11}</Project>
       <Name>MicroServices.Common.General</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Clients\" />
+    <Folder Include="Dto\" />
+    <Folder Include="Enums\" />
+    <Folder Include="Events\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

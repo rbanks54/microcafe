@@ -1,6 +1,5 @@
 ﻿"use strict";
 
-//angular.module('journeyDesigner.factory', []).
 app.
     factory("$layoutToggles", function ($rootScope, $layout) {
 

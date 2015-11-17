@@ -18,7 +18,7 @@ if($continue) {
     
     Execute("$PSScriptRoot\Cashier\Cashier.ReadModels.Service\bin\Debug\Cashier.ReadModels.Service.exe");
     
-    Execute("$PSScriptRoot\Barista\Barista.ReadModels.Service\bin\Debug\Barista.ReadModels.Service.exe")
+#    Execute("$PSScriptRoot\Barista\Barista.ReadModels.Service\bin\Debug\Barista.ReadModels.Service.exe")
     
-    Execute("$PSScriptRoot\Barista\Barista.Service\bin\Debug\Barista.Service.exe")    
+#    Execute("$PSScriptRoot\Barista\Barista.Service\bin\Debug\Barista.Service.exe")    
 }

@@ -34,12 +34,6 @@ namespace Cashier.ReadModels.Service
 
         private void ConfigureHandlers()
         {
-            // ------------------------------------------------------------------------------------
-            // SJC : this is using the app.config to indicate settings
-            //       BUT
-            //       this maybe a problem for the octopus deploy mechanism.
-            // ------------------------------------------------------------------------------------
-            //var appConfig = AppConfiguration.Config;
             var redis = ConnectionMultiplexer.Connect("localhost");
             var brandView = new OrderView(new RedisReadModelRepository<OrderDto>(redis.GetDatabase()));
             ServiceLocator.BrandView = brandView;
@@ -48,7 +42,7 @@ namespace Cashier.ReadModels.Service
                             .Scan(brandView)
                             .Handlers;
 
-            var messageBusEndPoint = "masterdata_readmodel";
+            var messageBusEndPoint = "cashier_readmodel";
             var topicFilter = "Cashier.Common.Events";
 
             var b = RabbitHutch.CreateBus("host=localhost");
