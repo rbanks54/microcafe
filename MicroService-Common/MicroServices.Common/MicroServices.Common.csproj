@@ -72,7 +72,7 @@
     <Compile Include="Repository\EventStoreRepository.cs" />
     <Compile Include="MessageBus\IMessageBus.cs" />
     <Compile Include="Repository\InMemoryReadModelRepository.cs" />
-    <Compile Include="Repository\InMemoryRespository.cs" />
+    <Compile Include="Repository\InMemoryRepository.cs" />
     <Compile Include="Repository\IReadModelRepository.cs" />
     <Compile Include="Repository\IRepository.cs" />
     <Compile Include="MessageBus\InProcessMessageBus.cs" />

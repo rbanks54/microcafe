@@ -3,7 +3,7 @@ using System.Web.Http;
 using EventStore.ClientAPI;
 using Owin;
 using Cashier.Service.Config;
-using Cashier.Service.MicroServices.Brand.Handlers;
+using Cashier.Service.MicroServices.Order.Handlers;
 using MicroServices.Common.MessageBus;
 using MicroServices.Common.Repository;
 using EasyNetQ;

@@ -1,8 +1,8 @@
 ﻿using System;
-using Cashier.Service.MicroServices.Brand.Commands;
+using Cashier.Service.MicroServices.Order.Commands;
 using MicroServices.Common.Repository;
 
-namespace Cashier.Service.MicroServices.Brand.Handlers
+namespace Cashier.Service.MicroServices.Order.Handlers
 {
     public class OrderCommandHandlers
     {
@@ -13,7 +13,7 @@ namespace Cashier.Service.MicroServices.Brand.Handlers
             this.repository = repository;
         }
 
-        public void Handle(PlaceOrder message)
+        public void Handle(StartNewOrder message)
         {
             var order = new Domain.Order(message.Id, message.ProductId, message.Quantity);
             repository.Save(order);

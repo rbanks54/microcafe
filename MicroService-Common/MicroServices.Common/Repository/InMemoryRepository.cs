@@ -8,14 +8,14 @@ using MicroServices.Common.Exceptions;
 
 namespace MicroServices.Common.Repository
 {
-    public class InMemoryRespository : Repository
+    public class InMemoryRepository : Repository
     {
         private readonly IMessageBus bus;
         public Dictionary<Guid, List<string>> EventStore = new Dictionary<Guid, List<string>>();
         private readonly List<Event> latestEvents = new List<Event>();
         private readonly JsonSerializerSettings serializationSettings;
 
-        public InMemoryRespository(IMessageBus bus)
+        public InMemoryRepository(IMessageBus bus)
         {
             this.bus = bus;
             serializationSettings = new JsonSerializerSettings

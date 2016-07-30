@@ -1,4 +1,4 @@
-﻿using Cashier.Service.MicroServices.Brand.Handlers;
+﻿using Cashier.Service.MicroServices.Order.Handlers;
 using MicroServices.Common.MessageBus;
 
 namespace Cashier.Service

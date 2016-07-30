@@ -3,7 +3,7 @@ using System.Linq;
 using Cashier.Common.Events;
 using MicroServices.Common;
 
-namespace Cashier.Service.MicroServices.Brand.Domain
+namespace Cashier.Service.MicroServices.Order.Domain
 {
     public class Order : Aggregate
     {
