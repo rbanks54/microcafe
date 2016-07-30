@@ -12,10 +12,9 @@ using System.Threading.Tasks;
 
 namespace Admin.ReadModels.Client
 {
-    public class ProductsView
+    public class ProductsView : IProductsView
     {
         private const string adminServiceUrl = "http://localhost:8181/api/";
-        private static TransientSubscriber adminEventListener;
 
         private static ConcurrentDictionary<Guid, ProductDto> products = new ConcurrentDictionary<Guid, ProductDto>();
 
@@ -23,7 +22,7 @@ namespace Admin.ReadModels.Client
         {
             InitialiseProducts();
 
-            adminEventListener = new TransientSubscriber(
+            var adminEventListener = new TransientSubscriber(
                 "admin_client_productview_" + Assembly.GetEntryAssembly().FullName.Split(',').FirstOrDefault(),
                 "Admin.Common.Events",
                 () =>
@@ -45,7 +44,7 @@ namespace Admin.ReadModels.Client
 
         public ProductDto GetById(Guid id)
         {
-            ProductDto result = null;
+            ProductDto result;
             if (products.TryGetValue(id, out result))
             {
                 return result;

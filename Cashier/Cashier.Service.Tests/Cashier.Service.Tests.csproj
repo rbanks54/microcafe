@@ -60,12 +60,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="OrderCommandTests.cs" />
+    <Compile Include="Products.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Admin\Admin.Common\Admin.Common.csproj">
+      <Project>{5e571774-1d77-4f79-af04-27a85dac1340}</Project>
+      <Name>Admin.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Admin\Admin.ReadModels.Client\Admin.ReadModels.Client.csproj">
+      <Project>{c46d3e71-e08d-4f45-b54b-03e3759028e3}</Project>
+      <Name>Admin.ReadModels.Client</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\MicroService-Common\MicroServices.Common.General\MicroServices.Common.General.csproj">
       <Project>{fc24d38f-fb96-43e1-b21e-b6e1bfa1dc11}</Project>
       <Name>MicroServices.Common.General</Name>

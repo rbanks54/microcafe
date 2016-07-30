@@ -40,9 +40,10 @@ namespace Cashier.Service.Tests
         }
 
         [Fact]
-        public void Should_succeed_when_starting_a_new_order()
+        public void Should_succeed_when_starting_a_new_order_with_a_valid_product_and_quantity()
         {
             var id = Guid.NewGuid();
+            //TODO: Create a valid product
             var productId = Guid.NewGuid();
 
             var command = new StartNewOrder(id, productId, 1);
@@ -52,6 +53,5 @@ namespace Cashier.Service.Tests
             var order = repository.GetById<Order>(id);
             Assert.Equal(1, order.Quantity);
         }
-
     }
 }

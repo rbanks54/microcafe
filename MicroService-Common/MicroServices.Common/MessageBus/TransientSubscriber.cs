@@ -9,12 +9,11 @@ namespace MicroServices.Common.MessageBus
 {
     public class TransientSubscriber : IDisposable
     {
-        private IBus bus;
         private ISubscriptionResult subscription;
 
-        private Action handler;
-        private string topic;
-        private string listenerName;
+        private readonly Action handler;
+        private readonly string topic;
+        private readonly string listenerName;
 
         public TransientSubscriber(string listenerName, string topic, Action handler)
         {
@@ -27,7 +26,7 @@ namespace MicroServices.Common.MessageBus
 
         private void InitialiseBus()
         {
-            bus = RabbitHutch.CreateBus("host=localhost");
+            var bus = RabbitHutch.CreateBus("host=localhost");
             subscription = bus.Subscribe<PublishedMessage>(listenerName, m => handler(), q => q.WithTopic(topic));
         }
 
