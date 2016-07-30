@@ -12,17 +12,26 @@ namespace Cashier.Service.Tests
     public class Products
     {
         readonly Admin.ReadModels.Client.IProductsView adminProductView;
+        readonly ProductView productView;
 
         public Products()
         {
             adminProductView = new FakeAdminProductView();
+            productView = new ProductView(adminProductView);
         }
 
         [Fact]
         public void Should_retrieve_a_list_of_all_products_via_admin_client_when_view_is_created()
         {
-            IProductView productView = new ProductView(adminProductView);
             Assert.Equal(2, productView.GetAll().Count());
+        }
+
+        [Fact]
+        public void Should_retrieve_product_when_given_a_known_product_id()
+        {
+            var id = productView.GetAll().First().Id;
+            var p = productView.GetById(id);
+            Assert.Equal(id, p.Id);
         }
     }
 

@@ -5,15 +5,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Cashier.Service.MicroServices.Product.Domain;
 
 namespace Cashier.Service.MicroServices.Product.View
 {
-    public interface IProductView
-    {
-        IEnumerable<Domain.Product> GetAll();
-    }
-
-    public class ProductView : IProductView
+    public class ProductView
     {
         private readonly Admin.ReadModels.Client.IProductsView adminProducts;
         private static ConcurrentDictionary<Guid, Domain.Product> products = new ConcurrentDictionary<Guid, Domain.Product>();
@@ -44,5 +40,12 @@ namespace Cashier.Service.MicroServices.Product.View
             }
         }
 
+        public Domain.Product GetById(Guid id)
+        {
+            Domain.Product product;
+            if (products.TryGetValue(id, out product)) return product;
+
+            throw new ArgumentOutOfRangeException("id","A product with the id of " + id.ToString() + "couldn't be found");
+        }
     }
 }
