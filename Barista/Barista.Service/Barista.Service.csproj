@@ -98,12 +98,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CachedData\Product.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
-    <Compile Include="DataTransferObjects\Commands\Products\CreateProductCommand.cs" />
-    <Compile Include="DataTransferObjects\Commands\Products\AlterProductCommand.cs" />
-    <Compile Include="MicroServices\Products\Handlers\ProductCommandHandlers.cs" />
-    <Compile Include="MicroServices\Products\Commands\ProductCommands.cs" />
-    <Compile Include="MicroServices\Products\Domain\Product.cs" />
+    <Compile Include="DataTransferObjects\Commands\Orders\CompleteOrderCommand.cs" />
+    <Compile Include="MicroServices\Orders\Domain\Order.cs" />
+    <Compile Include="MicroServices\Orders\Handlers\OrderCommandHandlers.cs" />
+    <Compile Include="MicroServices\Orders\Commands\OrderCommands.cs" />
+    <Compile Include="CachedData\Products.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceLocator.cs" />
@@ -114,6 +115,14 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Admin\Admin.Common\Admin.Common.csproj">
+      <Project>{997a090f-c9c1-402a-9d2f-134378bbdac4}</Project>
+      <Name>Admin.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Admin\Admin.ReadModels.Client\Admin.ReadModels.Client.csproj">
+      <Project>{c46d3e71-e08d-4f45-b54b-03e3759028e3}</Project>
+      <Name>Admin.ReadModels.Client</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\MicroService-Common\MicroServices.Common.General\MicroServices.Common.General.csproj">
       <Project>{fc24d38f-fb96-43e1-b21e-b6e1bfa1dc11}</Project>
       <Name>MicroServices.Common.General</Name>

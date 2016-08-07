@@ -2,11 +2,11 @@
 using System.Web.Http;
 using EventStore.ClientAPI;
 using Owin;
-using Barista.Common.Clients;
 using Barista.Service.MicroServices.Products.Handlers;
 using MicroServices.Common.MessageBus;
 using MicroServices.Common.Repository;
 using EasyNetQ;
+using Admin.ReadModels.Client;
 
 namespace Barista.Service
 {
@@ -22,7 +22,7 @@ namespace Barista.Service
 
         private void LoadExternalData()
         {
-            IBaristaClient masterDataClient = new BaristaClient();
+            IProductsView masterDataClient = new ProductsView();
             masterDataClient.Initialise();
         }
 
