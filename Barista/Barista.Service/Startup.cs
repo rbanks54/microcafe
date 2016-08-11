@@ -2,7 +2,7 @@
 using System.Web.Http;
 using EventStore.ClientAPI;
 using Owin;
-using Barista.Service.MicroServices.Products.Handlers;
+using Barista.Service.MicroServices.Orders.Handlers;
 using MicroServices.Common.MessageBus;
 using MicroServices.Common.Repository;
 using EasyNetQ;
@@ -50,7 +50,7 @@ namespace Barista.Service
             eventStoreConnection.ConnectAsync().Wait();
             var repository = new EventStoreRepository(eventStoreConnection, bus);
             
-            ServiceLocator.ProductCommands = new ProductCommandHandlers(repository);
+            ServiceLocator.OrderCommands = new OrderCommandHandlers(repository);
         }
     }
 }

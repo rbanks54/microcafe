@@ -1,56 +1,29 @@
 ﻿using System;
 using Barista.Common.Dto;
-using Barista.Service.MicroServices.Products.Commands;
+using Barista.Service.MicroServices.Orders.Commands;
 using MicroServices.Common.Repository;
+using Barista.Service.MicroServices.Orders.Domain;
 
-namespace Barista.Service.MicroServices.Products.Handlers
+namespace Barista.Service.MicroServices.Orders.Handlers
 {
-    public class ProductCommandHandlers
+    public class OrderCommandHandlers
     {
         private readonly IRepository repository;
 
-        public ProductCommandHandlers(IRepository repository)
+        public OrderCommandHandlers(IRepository repository)
         {
             this.repository = repository;
         }
 
-        public void Handle(CreateProduct message)
+        public void Handle(CompleteOrder message)
         {
-            // Validation 
-            ProductDto existingProduct = null;
-            
-            // Process
-            var series = new Products.Domain.Product(message.Id, message.Code, message.Name, message.Description, message.ProductType);
-            repository.Save(series);
-        }
-
-        public void Handle(AlterProduct message)
-        {
-            var product = repository.GetById<Products.Domain.Product>(message.Id);
+            var order = repository.GetById<Order>(message.Id);
 
             int committedVersion = message.OriginalVersion;
 
-            if (!String.Equals(product.Code, message.NewCode, StringComparison.OrdinalIgnoreCase))
-            {
-                product.ChangeCode(message.NewCode, committedVersion++);
-            }
+            order.Complete(committedVersion++);
 
-            if (!String.Equals(product.Name, message.NewTitle, StringComparison.OrdinalIgnoreCase))
-            {
-                product.ChangeTitle(message.NewTitle, committedVersion++);
-            }
-
-            if (!String.Equals(product.Description, message.NewDescription, StringComparison.OrdinalIgnoreCase))
-            {
-                product.ChangeDescription(message.NewDescription, committedVersion++);
-            }
-
-            if (message.NewProductType != product.Type)
-            {
-                product.ChangeType(message.NewProductType, committedVersion);
-            }
-
-            repository.Save(product);
+            repository.Save(order);
         }
     }
 }

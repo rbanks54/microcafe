@@ -1,43 +1,28 @@
 ﻿using System;
-using Barista.Common.Enums;
 using MicroServices.Common;
 
-namespace Barista.Service.MicroServices.Products.Commands
+namespace Barista.Service.MicroServices.Orders.Commands
 {
-    public class CreateProduct : ICommand
+    public class CompleteOrder : ICommand
     {
         public Guid Id { get; private set; }
-        public string Code { get; private set; }
-        public string Name { get; private set; }
-        public string Description { get; private set; }
-        public ProductType ProductType { get; set; }
+        public int OriginalVersion { get; private set; }
 
-        public CreateProduct(Guid id, string code, string name, string description, ProductType productType)
+        public CompleteOrder(Guid id, int originalVersion)
         {
             Id = id;
-            Code = code;
-            Name = name;
-            Description = description;
-            ProductType = productType;
+            OriginalVersion = originalVersion;
         }
     }
 
-    public class AlterProduct : ICommand
+    public class CancelOrder: ICommand
     {
         public Guid Id { get; private set; }
-        public string NewCode { get; private set; }
-        public string NewTitle { get; set; }
-        public string NewDescription { get; set; }
-        public ProductType NewProductType { get; set; }
         public int OriginalVersion { get; private set; }
 
-        public AlterProduct(Guid id, int originalVersion, string newCode, string newTitle, string newDescription, ProductType newProductType)
+        public CancelOrder(Guid id, int originalVersion)
         {
             Id = id;
-            NewCode = newCode;
-            NewTitle = newTitle;
-            NewDescription = newDescription;
-            NewProductType = newProductType;
             OriginalVersion = originalVersion;
         }
     }

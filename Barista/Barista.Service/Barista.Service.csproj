@@ -99,7 +99,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CachedData\Product.cs" />
-    <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="DataTransferObjects\Commands\Orders\CompleteOrderCommand.cs" />
     <Compile Include="MicroServices\Orders\Domain\Order.cs" />
     <Compile Include="MicroServices\Orders\Handlers\OrderCommandHandlers.cs" />
@@ -122,6 +122,10 @@
     <ProjectReference Include="..\..\Admin\Admin.ReadModels.Client\Admin.ReadModels.Client.csproj">
       <Project>{c46d3e71-e08d-4f45-b54b-03e3759028e3}</Project>
       <Name>Admin.ReadModels.Client</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Cashier\Cashier.Common\Cashier.Common.csproj">
+      <Project>{d3478255-cb14-4f5d-ac78-2e48b5ec2439}</Project>
+      <Name>Cashier.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\MicroService-Common\MicroServices.Common.General\MicroServices.Common.General.csproj">
       <Project>{fc24d38f-fb96-43e1-b21e-b6e1bfa1dc11}</Project>
