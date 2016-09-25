@@ -1,6 +1,8 @@
 ﻿using System;
 
 using MicroServices.Common;
+using Cashier.Common.Events;
+using Barista.Common.Events;
 
 namespace Barista.Service.MicroServices.Orders.Domain
 {
@@ -8,21 +10,26 @@ namespace Barista.Service.MicroServices.Orders.Domain
     {
         private Order() { }
 
-        public string Code { get; private set; }
-        public string Name { get; private set; }
-        public string Description { get; private set; }
+        public Guid ProductId { get; private set; }
         public bool IsCompleted { get; private set; }
                 
         private void Apply(OrderPlaced o)
         {
             Id = o.Id;
-            Code = o.Code;
-            Name = o.Name;
+            ProductId = o.ProductId;
         }
 
-        private void Apply(OrderCompleted c)
+        private void Apply(OrderPrepared c)
         {
             IsCompleted = true;
+        }
+
+        public void CompletePreparation(int originalVersion)
+        {
+            //can only update the current version of an aggregate
+            ValidateVersion(originalVersion);
+
+            ApplyEvent(new OrderPrepared(Id));
         }
 
         void ValidateVersion(int version)

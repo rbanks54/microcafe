@@ -24,8 +24,8 @@ namespace Barista.Service.Controllers
 
 
         [HttpPost]
-        [Route("api/orders/{id:guid}/complete")]
-        public IHttpActionResult Post(Guid id, CompleteOrderCommand cmd)
+        [Route("api/orders/{id:guid}/prepared")]
+        public IHttpActionResult Post(Guid id, CompletePreparationCommand cmd)
         {            
             try
             {

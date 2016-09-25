@@ -100,7 +100,7 @@
   <ItemGroup>
     <Compile Include="CachedData\Product.cs" />
     <Compile Include="Controllers\OrderController.cs" />
-    <Compile Include="DataTransferObjects\Commands\Orders\CompleteOrderCommand.cs" />
+    <Compile Include="DataTransferObjects\Commands\Orders\CompletePreparationCommand.cs" />
     <Compile Include="MicroServices\Orders\Domain\Order.cs" />
     <Compile Include="MicroServices\Orders\Handlers\OrderCommandHandlers.cs" />
     <Compile Include="MicroServices\Orders\Commands\OrderCommands.cs" />

@@ -1,5 +1,4 @@
 ﻿using System;
-using Barista.Common.Dto;
 using Barista.Service.MicroServices.Orders.Commands;
 using MicroServices.Common.Repository;
 using Barista.Service.MicroServices.Orders.Domain;
@@ -21,7 +20,7 @@ namespace Barista.Service.MicroServices.Orders.Handlers
 
             int committedVersion = message.OriginalVersion;
 
-            order.Complete(committedVersion++);
+            order.CompletePreparation(committedVersion++);
 
             repository.Save(order);
         }
