@@ -40,6 +40,18 @@ namespace Cashier.Service.MicroServices.Product.View
             }
         }
 
+        internal void Add(Guid id, decimal price)
+        {
+            var success = products.TryAdd(id, new Domain.Product() { Id = id, Price = price });
+            if (!success)
+            {
+                //Assume product is already present from a previous event (not sure if it's possible)
+                //So we'll just update the price instead.
+                var p = GetById(id);
+                p.Price = price;
+            }
+        }
+
         public Domain.Product GetById(Guid id)
         {
             Domain.Product product;

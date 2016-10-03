@@ -107,6 +107,7 @@
     <Compile Include="MicroServices\Order\Domain\Order.cs" />
     <Compile Include="MicroServices\Order\Handlers\OrderCommandHandlers.cs" />
     <Compile Include="MicroServices\Product\Domain\Product.cs" />
+    <Compile Include="MicroServices\Product\Handlers\AdminEventsHandler.cs" />
     <Compile Include="MicroServices\Product\View\ProductView.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

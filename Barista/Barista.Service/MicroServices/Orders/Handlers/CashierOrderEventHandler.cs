@@ -18,7 +18,7 @@ namespace Barista.Service.MicroServices.Orders.Handlers
             this.repository = repository;
         }
 
-        public void Handle(OrderPlaced @event)
+        public void Apply(OrderPlaced @event)
         {
             //Events from external sources that need to act on the domain should 
             //cause commands on the domain to be fired.

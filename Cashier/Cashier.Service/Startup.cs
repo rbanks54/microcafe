@@ -7,6 +7,12 @@ using Cashier.Service.MicroServices.Order.Handlers;
 using MicroServices.Common.MessageBus;
 using MicroServices.Common.Repository;
 using EasyNetQ;
+using MicroServices.Common.General.Util;
+using Cashier.Service.MicroServices.Product.Handlers;
+using MicroServices.Common;
+using System;
+using Newtonsoft.Json;
+using Cashier.Service.MicroServices.Product.View;
 
 namespace Cashier.Service
 {
@@ -32,8 +38,12 @@ namespace Cashier.Service
 
         private void ConfigureHandlers()
         {
-            var bus = new RabbitMqBus(RabbitHutch.CreateBus("host=localhost"));
+            var b = RabbitHutch.CreateBus("host=localhost");
+            var bus = new RabbitMqBus(b);
             ServiceLocator.Bus = bus;
+
+            var messageBusEndPoint = "cashier_service";
+            var topicFilter = "Admin.Common.Events";
 
             var eventStorePort = 12800;
 
@@ -42,6 +52,26 @@ namespace Cashier.Service
             var repository = new EventStoreRepository(eventStoreConnection, bus);
 
             ServiceLocator.OrderCommands = new OrderCommandHandlers(repository);
+            ServiceLocator.ProductView = new ProductView();
+
+            var eventMappings = new EventHandlerDiscovery()
+                .Scan(new AdminEventsHandler())
+                .Handlers;
+
+            b.Subscribe<PublishedMessage>(messageBusEndPoint,
+            m =>
+            {
+                Aggregate handler;
+                var messageType = Type.GetType(m.MessageTypeName);
+                var handlerFound = eventMappings.TryGetValue(messageType, out handler);
+                if (handlerFound)
+                {
+                    var @event = JsonConvert.DeserializeObject(m.SerialisedMessage, messageType);
+                    handler.AsDynamic().ApplyEvent(@event, ((Event)@event).Version);
+                }
+            },
+            q => q.WithTopic(topicFilter));
+
         }
     }
 }

@@ -32,7 +32,7 @@ namespace Barista.Service.Tests
             var handler = new OrderCommandHandlers(repository);
             var e = new OrderPlaced(id, Guid.NewGuid(), 1);
             var eventHandler = new CashierOrderEventHandler(repository);
-            eventHandler.Handle(e);
+            eventHandler.Apply(e);
 
             var order = repository.GetById<Order>(id);
             Assert.False(order.IsCompleted);
