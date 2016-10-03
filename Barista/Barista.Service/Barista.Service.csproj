@@ -102,6 +102,7 @@
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="DataTransferObjects\Commands\Orders\CompletePreparationCommand.cs" />
     <Compile Include="MicroServices\Orders\Domain\Order.cs" />
+    <Compile Include="MicroServices\Orders\Handlers\CashierOrderEventHandler.cs" />
     <Compile Include="MicroServices\Orders\Handlers\OrderCommandHandlers.cs" />
     <Compile Include="MicroServices\Orders\Commands\OrderCommands.cs" />
     <Compile Include="CachedData\Products.cs" />

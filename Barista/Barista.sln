@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Admin.ReadModels.Client", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cashier.Common", "..\Cashier\Cashier.Common\Cashier.Common.csproj", "{D3478255-CB14-4F5D-AC78-2E48B5EC2439}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Barista.Service.Tests", "Barista.Service.Tests\Barista.Service.Tests.csproj", "{F330DA6C-2C02-43F5-A89A-4D365C08BEEE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +57,10 @@ Global
 		{D3478255-CB14-4F5D-AC78-2E48B5EC2439}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D3478255-CB14-4F5D-AC78-2E48B5EC2439}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D3478255-CB14-4F5D-AC78-2E48B5EC2439}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F330DA6C-2C02-43F5-A89A-4D365C08BEEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F330DA6C-2C02-43F5-A89A-4D365C08BEEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F330DA6C-2C02-43F5-A89A-4D365C08BEEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F330DA6C-2C02-43F5-A89A-4D365C08BEEE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -65,5 +71,6 @@ Global
 		{997A090F-C9C1-402A-9D2F-134378BBDAC4} = {3A37F4C0-8133-403A-9490-856E00D4A5C7}
 		{C46D3E71-E08D-4F45-B54B-03E3759028E3} = {3A37F4C0-8133-403A-9490-856E00D4A5C7}
 		{D3478255-CB14-4F5D-AC78-2E48B5EC2439} = {3A37F4C0-8133-403A-9490-856E00D4A5C7}
+		{F330DA6C-2C02-43F5-A89A-4D365C08BEEE} = {F13AB59D-7BF7-460F-AF5E-97B65BFAE44C}
 	EndGlobalSection
 EndGlobal

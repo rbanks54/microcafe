@@ -7,5 +7,6 @@ namespace Barista.Service
     {
         public static IMessageBus Bus { get; set; }
         public static OrderCommandHandlers OrderCommands { get; set; }
+        public static CashierOrderEventHandler CahierEventHandler { get; set; }
     }
 }
