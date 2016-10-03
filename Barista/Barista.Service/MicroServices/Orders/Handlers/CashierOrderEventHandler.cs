@@ -22,7 +22,7 @@ namespace Barista.Service.MicroServices.Orders.Handlers
         {
             //Events from external sources that need to act on the domain should 
             //cause commands on the domain entities to be fired.
-            var order = new Order(@event.Id, @event.ProductId, @event.Quantity);
+            var order = new BaristaOrder(@event.Id, @event.ProductId, @event.Quantity);
             repository.Save(order);
         }
     }

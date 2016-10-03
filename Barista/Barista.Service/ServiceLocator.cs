@@ -6,7 +6,7 @@ namespace Barista.Service
     public static class ServiceLocator
     {
         public static IMessageBus Bus { get; set; }
-        public static OrderCommandHandlers OrderCommands { get; set; }
+        public static BaristaOrderCommandHandlers OrderCommands { get; set; }
         public static CashierOrderEventHandler CahierEventHandler { get; set; }
     }
 }

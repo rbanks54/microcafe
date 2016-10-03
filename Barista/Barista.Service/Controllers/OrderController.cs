@@ -11,13 +11,13 @@ namespace Barista.Service.Controllers
 {
     public class OrderController : ApiController
     {
-        private readonly OrderCommandHandlers handler;
+        private readonly BaristaOrderCommandHandlers handler;
 
         public OrderController()
             : this(ServiceLocator.OrderCommands)
         {}
 
-        public OrderController(OrderCommandHandlers handler)
+        public OrderController(BaristaOrderCommandHandlers handler)
         {
             this.handler = handler;
         }

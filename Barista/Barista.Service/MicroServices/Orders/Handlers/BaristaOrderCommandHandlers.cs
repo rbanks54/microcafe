@@ -5,18 +5,18 @@ using Barista.Service.MicroServices.Orders.Domain;
 
 namespace Barista.Service.MicroServices.Orders.Handlers
 {
-    public class OrderCommandHandlers
+    public class BaristaOrderCommandHandlers
     {
         private readonly IRepository repository;
 
-        public OrderCommandHandlers(IRepository repository)
+        public BaristaOrderCommandHandlers(IRepository repository)
         {
             this.repository = repository;
         }
 
         public void Handle(CompleteOrder message)
         {
-            var order = repository.GetById<Order>(message.Id);
+            var order = repository.GetById<BaristaOrder>(message.Id);
 
             int committedVersion = message.OriginalVersion;
 

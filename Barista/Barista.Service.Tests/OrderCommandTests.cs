@@ -29,18 +29,18 @@ namespace Barista.Service.Tests
         public void Should_raise_prepared_event_when_barista_completes_preparation()
         {
             var id = Guid.NewGuid();
-            var handler = new OrderCommandHandlers(repository);
+            var handler = new BaristaOrderCommandHandlers(repository);
             var e = new OrderPlaced(id, Guid.NewGuid(), 1);
             var eventHandler = new CashierOrderEventHandler(repository);
             eventHandler.Apply(e);
 
-            var order = repository.GetById<Order>(id);
+            var order = repository.GetById<BaristaOrder>(id);
             Assert.False(order.IsCompleted);
 
             var command = new CompleteOrder(id, order.Version);
             handler.Handle(command);
 
-            order = repository.GetById<Order>(id);
+            order = repository.GetById<BaristaOrder>(id);
             Assert.True(order.IsCompleted);
         }
     }

@@ -57,7 +57,7 @@ namespace Barista.Service
             eventStoreConnection.ConnectAsync().Wait();
             var repository = new EventStoreRepository(eventStoreConnection, bus);
             
-            ServiceLocator.OrderCommands = new OrderCommandHandlers(repository);
+            ServiceLocator.OrderCommands = new BaristaOrderCommandHandlers(repository);
 
             var cashierEventHandler = new CashierOrderEventHandler(repository);
             ServiceLocator.CahierEventHandler = cashierEventHandler;

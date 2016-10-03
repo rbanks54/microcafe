@@ -6,14 +6,14 @@ using Barista.Common.Events;
 
 namespace Barista.Service.MicroServices.Orders.Domain
 {
-    public class Order : Aggregate
+    public class BaristaOrder : Aggregate
     {
-        internal Order() { }
+        internal BaristaOrder() { }
 
         //We use this constructor to create an order in the service, based on an external ProductPlaced
         //event from the cashier. We don't have any user commands to create an order in the barista domain,
         //only external events from the cashier service.
-        internal Order(Guid id, Guid productId, int quantity)
+        internal BaristaOrder(Guid id, Guid productId, int quantity)
         {
             if (quantity <= 0) throw new ArgumentOutOfRangeException("quantity", "quantity must be a number from 1 and up");
             if (Guid.Empty.Equals(productId)) throw new ArgumentNullException("productId", "A valid Product Guid must be provided");
