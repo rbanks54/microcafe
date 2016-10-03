@@ -21,7 +21,7 @@ namespace Barista.Service.MicroServices.Orders.Handlers
         public void Apply(OrderPlaced @event)
         {
             //Events from external sources that need to act on the domain should 
-            //cause commands on the domain to be fired.
+            //cause commands on the domain entities to be fired.
             var order = new Order(@event.Id, @event.ProductId, @event.Quantity);
             repository.Save(order);
         }

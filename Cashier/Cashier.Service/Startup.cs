@@ -45,7 +45,7 @@ namespace Cashier.Service
             var messageBusEndPoint = "cashier_service";
             var topicFilter = "Admin.Common.Events";
 
-            var eventStorePort = 12800;
+            var eventStorePort = 12900;
 
             var eventStoreConnection = EventStoreConnection.Create(new IPEndPoint(IPAddress.Loopback, eventStorePort));
             eventStoreConnection.ConnectAsync().Wait();

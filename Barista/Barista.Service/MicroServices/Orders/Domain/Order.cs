@@ -11,7 +11,8 @@ namespace Barista.Service.MicroServices.Orders.Domain
         internal Order() { }
 
         //We use this constructor to create an order in the service, based on an external ProductPlaced
-        //event from the cashier. We don't have any commands to create the order, only external events.
+        //event from the cashier. We don't have any user commands to create an order in the barista domain,
+        //only external events from the cashier service.
         internal Order(Guid id, Guid productId, int quantity)
         {
             if (quantity <= 0) throw new ArgumentOutOfRangeException("quantity", "quantity must be a number from 1 and up");
@@ -19,7 +20,6 @@ namespace Barista.Service.MicroServices.Orders.Domain
 
             ApplyEvent(new OrderPlaced(id, productId, quantity));
         }
-
 
         public Guid ProductId { get; private set; }
         public bool IsCompleted { get; private set; }
@@ -29,6 +29,7 @@ namespace Barista.Service.MicroServices.Orders.Domain
         {
             Id = o.Id;
             ProductId = o.ProductId;
+            Quantity = o.Quantity;
         }
 
         private void Apply(OrderPrepared c)
