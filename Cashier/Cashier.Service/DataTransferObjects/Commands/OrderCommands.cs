@@ -6,7 +6,7 @@ namespace Cashier.Service.DataTransferObjects.Commands
     {
         public Guid Id { get; set; }
         public Guid ProductId { get; set; }
-        public int Quanity { get; set; }
+        public int Quantity { get; set; }
     }
 
     public class PayForOrderCommand

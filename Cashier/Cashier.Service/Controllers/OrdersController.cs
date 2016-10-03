@@ -22,7 +22,7 @@ namespace Cashier.Service.Controllers
                 throw new HttpResponseException(response);
             }
 
-            var command = new StartNewOrder(cmd.Id, cmd.ProductId, cmd.Quanity);
+            var command = new StartNewOrder(cmd.Id, cmd.ProductId, cmd.Quantity);
 
             try
             {
