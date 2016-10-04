@@ -12,12 +12,15 @@ namespace Cashier.Service.MicroServices.Product.View
     public class ProductView
     {
         private readonly Admin.ReadModels.Client.IProductsView adminProducts;
-        private static ConcurrentDictionary<Guid, Domain.Product> products = new ConcurrentDictionary<Guid, Domain.Product>();
+        private readonly ConcurrentDictionary<Guid, Domain.Product> products = new ConcurrentDictionary<Guid, Domain.Product>();
 
         public ProductView(Admin.ReadModels.Client.IProductsView adminProductView)
         {
             adminProducts = adminProductView;
-            InitialiseProducts();
+            if (products.Count == 0)
+            {
+                InitialiseProducts();
+            }
         }
 
         public ProductView() : this(new Admin.ReadModels.Client.ProductsView()) { }
