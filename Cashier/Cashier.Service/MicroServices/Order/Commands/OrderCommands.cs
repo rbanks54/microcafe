@@ -1,11 +1,11 @@
 ﻿using System;
 using MicroServices.Common;
 
-namespace Cashier.Service.MicroServices.Brand.Commands
+namespace Cashier.Service.MicroServices.Order.Commands
 {
-    public class PlaceOrder : ICommand
+    public class StartNewOrder : ICommand
     {
-        public PlaceOrder(Guid id, Guid productId, int quantity)
+        public StartNewOrder(Guid id, Guid productId, int quantity)
         {
             Id = id;
             ProductId = productId;

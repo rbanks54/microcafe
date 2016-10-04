@@ -3,7 +3,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using Cashier.Service.DataTransferObjects.Commands;
-using Cashier.Service.MicroServices.Brand.Commands;
+using Cashier.Service.MicroServices.Order.Commands;
 using MicroServices.Common.Exceptions;
 
 namespace Cashier.Service.Controllers
@@ -22,7 +22,7 @@ namespace Cashier.Service.Controllers
                 throw new HttpResponseException(response);
             }
 
-            var command = new PlaceOrder(cmd.Id, cmd.ProductId, cmd.Quanity);
+            var command = new StartNewOrder(cmd.Id, cmd.ProductId, cmd.Quantity);
 
             try
             {

@@ -1,34 +1,64 @@
-﻿Import-Module -Name "$PSScriptRoot\Invoke-MsBuild.psm1"
+﻿[CmdletBinding()]
+param ()
 
-# global variables
-Function BuildSolutions($pathToSolution) {
+Import-Module -Name "$PSScriptRoot\Invoke-MsBuild.psm1"
+Import-Module -Name "$PSScriptRoot\Invoke-NuGetPackageRestore.psm1"
+
+$solutions = @(
+    @{ Solution = "Microservices Common";   Path = "$PSScriptRoot\MicroService-Common\MicroServices.Common.sln" },
+    @{ Solution = "Admin";                  Path = "$PSScriptRoot\Admin\Admin.sln" },
+    @{ Solution = "Cashier";                Path = "$PSScriptRoot\Cashier\Cashier.sln" },
+    @{ Solution = "Barista";                Path = "$PSScriptRoot\Barista\Barista.sln" }
+)
+
+Function ReportProgress($currentSolution, $currentStatus, $currentPercentage) {
+    Write-Progress -Id 1 -Activity "Microservices Build" -Status "Building $currentSolution" -CurrentOperation $currentStatus -PercentComplete $currentPercentage
+}
+
+Function BuildSolution($pathToSolution, $solutionName, $alreadyComplete, $totalSteps) {
+    $currentProgress = $alreadyComplete / $totalSteps * 100
+    $progressStep = 1 / $totalSteps * 100 / 2
+
+    ReportProgress $solutionName "Restoring NuGet packages" $currentProgress
+    $nugetSucceeded = Invoke-NuGetPackageRestore -Path $pathToSolution
+    
+    if (!$nugetSucceeded)
+    {
+        return $nugetSucceeded
+    }
+
+    ReportProgress $solutionName "Running MSBuild" ($currentProgress + $progressStep)
     $buildSucceeded = Invoke-MsBuild -Path $pathToSolution
-
-    if ($buildSucceeded)
-    { 
-        Write-Host "  - Build completed successfully." 
-    }
-    else
-    { 
-        Write-Host "  - Build failed. Check the build log file for errors." 
-    }
 
     return $buildSucceeded;
 }
 
-# build the solutions
-$continue = $true;
-if($continue) {
-    Write-Host "1. Building Common Microservice Library ...." 
-    $continue = BuildSolutions("$PSScriptRoot\MicroService-Common\MicroServices.Common.sln");
+[System.Collections.ArrayList]$results = @()
+
+Function AddResult($solution, $result) {
+    $object = New-Object -TypeName PSObject
+
+    $object | Add-Member -MemberType NoteProperty -Name "Result" -Value $result    
+    $object | Add-Member -MemberType NoteProperty -Name "Solution" -Value $solution.Solution
+    $object | Add-Member -MemberType NoteProperty -Name "Location" -Value $solution.Path
+    
+    $results.Add($object) | Out-Null
 }
 
-if($continue) {
-    Write-Host "2. Building Cashier Services...." 
-    $continue = BuildSolutions("$PSScriptRoot\Cashier\Cashier.sln");
+foreach ($solution in $solutions) {
+    if (($results | Where-Object { $_.Result -eq "Failed" }) -ne $null) {
+        AddResult $solution "Skipped"
+        continue
+    }
+
+    $success = BuildSolution $solution.Path $solution.Solution $solutions.IndexOf($solution) $solutions.Length
+    
+    if ($success) { 
+        AddResult $solution "Succeeded" 
+    }
+    else { 
+        AddResult $solution "Failed" 
+    }
 }
 
-if($continue) {
-    Write-Host "3. Building Barista Services...." 
-    $continue = BuildSolutions("$PSScriptRoot\Barista\Barista.sln");
-}
+return $results

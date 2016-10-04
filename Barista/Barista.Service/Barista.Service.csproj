@@ -35,12 +35,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EasyNetQ, Version=0.50.10.403, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\EasyNetQ.0.50.10.403\lib\net40\EasyNetQ.dll</HintPath>
+    <Reference Include="EasyNetQ, Version=0.63.3.452, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\EasyNetQ.0.63.3.452\lib\net45\EasyNetQ.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="EventStore.ClientAPI, Version=3.2.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\EventStore.Client.3.2.1\lib\net40\EventStore.ClientAPI.dll</HintPath>
+    <Reference Include="EventStore.ClientAPI, Version=3.9.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\EventStore.Client.3.9.0\lib\net40\EventStore.ClientAPI.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Owin, Version=2.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -67,8 +67,8 @@
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="RabbitMQ.Client, Version=3.5.6.0, Culture=neutral, PublicKeyToken=89e7d7c5feba84ce, processorArchitecture=MSIL">
-      <HintPath>..\packages\RabbitMQ.Client.3.5.6\lib\net40\RabbitMQ.Client.dll</HintPath>
+    <Reference Include="RabbitMQ.Client, Version=3.6.0.0, Culture=neutral, PublicKeyToken=89e7d7c5feba84ce, processorArchitecture=MSIL">
+      <HintPath>..\packages\RabbitMQ.Client.3.6.0\lib\net45\RabbitMQ.Client.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -98,12 +98,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\ProductsController.cs" />
-    <Compile Include="DataTransferObjects\Commands\Products\CreateProductCommand.cs" />
-    <Compile Include="DataTransferObjects\Commands\Products\AlterProductCommand.cs" />
-    <Compile Include="MicroServices\Products\Handlers\ProductCommandHandlers.cs" />
-    <Compile Include="MicroServices\Products\Commands\ProductCommands.cs" />
-    <Compile Include="MicroServices\Products\Domain\Product.cs" />
+    <Compile Include="CachedData\Product.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
+    <Compile Include="DataTransferObjects\Commands\Orders\CompletePreparationCommand.cs" />
+    <Compile Include="MicroServices\Orders\Domain\BaristaOrder.cs" />
+    <Compile Include="MicroServices\Orders\Handlers\CashierOrderEventHandler.cs" />
+    <Compile Include="MicroServices\Orders\Handlers\BaristaOrderCommandHandlers.cs" />
+    <Compile Include="MicroServices\Orders\Commands\OrderCommands.cs" />
+    <Compile Include="CachedData\Products.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceLocator.cs" />
@@ -112,9 +114,20 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-    <None Include="Barista.Service.nuspec" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Admin\Admin.Common\Admin.Common.csproj">
+      <Project>{997a090f-c9c1-402a-9d2f-134378bbdac4}</Project>
+      <Name>Admin.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Admin\Admin.ReadModels.Client\Admin.ReadModels.Client.csproj">
+      <Project>{c46d3e71-e08d-4f45-b54b-03e3759028e3}</Project>
+      <Name>Admin.ReadModels.Client</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Cashier\Cashier.Common\Cashier.Common.csproj">
+      <Project>{d3478255-cb14-4f5d-ac78-2e48b5ec2439}</Project>
+      <Name>Cashier.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\MicroService-Common\MicroServices.Common.General\MicroServices.Common.General.csproj">
       <Project>{fc24d38f-fb96-43e1-b21e-b6e1bfa1dc11}</Project>
       <Name>MicroServices.Common.General</Name>
