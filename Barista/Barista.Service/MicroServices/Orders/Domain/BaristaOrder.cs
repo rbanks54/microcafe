@@ -1,7 +1,6 @@
 ﻿using System;
 
 using MicroServices.Common;
-using Cashier.Common.Events;
 using Barista.Common.Events;
 
 namespace Barista.Service.MicroServices.Orders.Domain
