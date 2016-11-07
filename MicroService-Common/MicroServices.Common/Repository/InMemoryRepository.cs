@@ -57,9 +57,12 @@ namespace MicroServices.Common.Repository
             latestEvents.AddRange(eventsToSave);
             if (bus != null)
             {
-                foreach (var latestEvent in latestEvents)
+                for (var index = latestEvents.Count - 1; index >= 0; index--)
                 {
+                    var latestEvent = latestEvents[index];
                     bus.Publish(latestEvent);
+                    // Add any logic here to check if things worked before removing the event from the store.
+                    latestEvents.RemoveAt(index);
                 }
             }
             aggregate.MarkEventsAsCommitted();
