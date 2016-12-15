@@ -57,7 +57,7 @@ namespace MicroServices.Common.Repository
             latestEvents.AddRange(eventsToSave);
             if (bus != null)
             {
-                foreach (var latestEvent in latestEvents)
+                foreach (var latestEvent in eventsToSave)
                 {
                     bus.Publish(latestEvent);
                 }
