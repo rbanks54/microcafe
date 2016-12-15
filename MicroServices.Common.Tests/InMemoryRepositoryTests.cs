@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Policy;
-using System.Text;
-using System.Threading.Tasks;
-using Admin.Service.MicroServices.Products.Domain;
+﻿using System.Linq;
 using MicroServices.Common.MessageBus;
 using MicroServices.Common.Repository;
+using MicroServices.Common.Tests.Entities;
 using Moq;
 using NUnit.Framework;
-using NUnit.Framework.Internal.Execution;
 
 namespace MicroServices.Common.Tests
 {
@@ -20,9 +14,9 @@ namespace MicroServices.Common.Tests
         {
             IMessageBus messageBus = Mock.Of<IMessageBus>();
             InMemoryRepository repository = new InMemoryRepository(messageBus);
-            Product aggregate = new Product(Guid.NewGuid(), "Name", "Description", 2);
+            TestAggregate testAggregate = new TestAggregate();
 
-            repository.Save(aggregate);
+            repository.Save(testAggregate);
             Mock.Get(messageBus).Verify(x => x.Publish(It.IsAny<Event>()), Times.Exactly(1));
         }
 
@@ -31,14 +25,14 @@ namespace MicroServices.Common.Tests
         {
             IMessageBus messageBus = Mock.Of<IMessageBus>();
             InMemoryRepository repository = new InMemoryRepository(messageBus);
-            Product aggregate = new Product(Guid.NewGuid(), "Name", "Description", 2);
-            aggregate.ChangeName("New Name", 0);
+            TestAggregate aggregate = new TestAggregate();
+            aggregate.DoChange();
             repository.Save(aggregate);
 
-            aggregate.ChangeName("New Name", 1);
+            aggregate.DoChange();
             repository.Save(aggregate);
 
-            aggregate.ChangeName("New Name", 2);
+            aggregate.DoChange();
             repository.Save(aggregate);
 
             Mock.Get(messageBus).Verify(x => x.Publish(It.IsAny<Event>()), Times.Exactly(repository.GetLatestEvents().Count()));

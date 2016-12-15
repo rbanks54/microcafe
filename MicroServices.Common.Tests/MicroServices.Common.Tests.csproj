@@ -62,6 +62,8 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Entities\TestAggregate.cs" />
+    <Compile Include="Entities\TestAggregateCreated.cs" />
     <Compile Include="InMemoryRepositoryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
